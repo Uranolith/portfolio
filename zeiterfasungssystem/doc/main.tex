@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage[a4paper, left=2.5cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\usepackage[german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{biblatex}
+\usepackage{csquotes}
+\usepackage{dirtytalk}
+\usepackage{float}
+\usepackage{fontspec}
+\usepackage{glossaries}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{inputenc}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{subcaption}
+\usepackage{subfiles}
+\usepackage{titlesec}
+\usepackage{url}
+\usepackage[table,xcdraw]{xcolor}
+
+% Titel
+\title{Time Tracking System}
+\author{Raffael Schäfer \and Florian Wittmann}
+\date{\today}
+
+%Glossar
+\makeglossaries
+
+% Textformatierung
+\renewcommand{\and}{\unskip,\ }
+\singlespacing
+\pagenumbering{arabic}
+\addbibresource{references.bib}
+\setmainfont{Times New Roman}
+% Section
+\titleformat{\section}[block]{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{2\baselineskip}{0.5\baselineskip}
+% Subsection
+\titlespacing*{\subsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
+
+\begin{document}
+
+\maketitle
+\begin{figure}[b!]
+     \includegraphics[width=\linewidth]{./images/logos/UCB Logo.png}
+     \label{fig:UCB Logo}
+\end{figure}
+\newpage
+\tableofcontents
+\listoffigures
+%\listoftables
+\printglossaries % Abkürzungsverzeichnis
+\newpage
+
+% Content
+
+\subfile{sections/grundidee}
+
+\subfile{sections/systemuebersicht}
+
+\subfile{sections/funktionen}
+
+\subfile{sections/entwicklung}
+
+\subfile{sections/optimierung_zukunft}
+
+\subfile{sections/appendix}
+
+\end{document}

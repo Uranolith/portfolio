@@ -69,6 +69,6 @@ Features:
 - Eigene PCB und 3D-gedrucktes Gehäuse
 
 **Projektbericht:**  
-[Projektbericht öffnen](zeiterfassungssystem/doc/version_20240311.pdf)
+[Projektbericht öffnen](zeiterfasungssystem/doc/version_20240311.pdf)
 
 ---

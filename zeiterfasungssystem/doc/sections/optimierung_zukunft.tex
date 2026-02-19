@@ -1,0 +1,51 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+\begin{document}
+\section{Optimierung und Zukunftsaussichten}
+
+\subsection{Hardware}
+\begin{itemize}
+  \item Kleinere Platine
+  \item Kleineres Gehäuse
+  \item USB-C als Stromversorgung
+  \item Wandhalterung für Gebäude-Eingänge (als Add-on)
+  \item Geräte Feedback, um dem Nutzer zu signalisieren, dass der An- und Abmeldevorgang geklappt hat.
+  \item Hardware basierte Uhrzeit (bessere Systemzeit)
+  \item Outdoor geeignete Hardware
+\end{itemize}
+
+\subsection{Sicherheit}
+\begin{itemize}
+    \item Login System für das Webinterface 
+    \item Besserer API Schutz
+\end{itemize}
+
+\subsection{Zeiterfassung}
+\begin{itemize} 
+    \item automatisierte Winter/Sommerzeit %???
+    \item offline Zeiterfassung
+\end{itemize}
+
+\subsection{Server-Client-Verbindung}
+\begin{itemize} 
+    \item Queue als Zwischenspeicher für Serveranfragen, falls Server mal nicht erreichbar
+    \item Server Cluster für Hochverfügbarkeit
+\end{itemize}
+
+\subsection{Server Architektur}
+\begin{itemize}
+    \item Postgres statt SQLite als Datenbank (Docker Container)
+    \item Aufteilung der Logischeneinheiten in Microservices (db, api, frontend)
+    \item Verwendung eines ORM statt selbst geschrieben SQL Befehlen
+    \item Frontend basierend auf einem modernen Web Framework (React, Vue, Svelte) (Client-Side Rendering)
+\end{itemize}
+
+\subsection{Features}
+\begin{itemize}
+    \item Chat Funktion via LLM (z.B. Llama2 oder Gemma)
+    \item Support für Microsoft Teams
+    \item Login System
+    \item Bessere Arbeitszeit Analyse und Visualisierung
+\end{itemize}
+
+\end{document}
