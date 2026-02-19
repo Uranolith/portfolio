@@ -34,9 +34,6 @@ Features:
 - Puzzle Levels
 - Lernsystem
 
-**Projektbericht:**  
-[Projektbericht öffnen](spiel-codi/doc/Codi_Report.pdf)
-
 ---
 
 ##  Software Projekte
