@@ -16,7 +16,7 @@ Die Bibliothek unterstützt:
 - Unterstützung von 4-, 5- und 6-Band-Widerständen  
 - GUI-Tool zur interaktiven Berechnung  
 
-Das Projekt verbindet Elektronik-Grundlagen mit objektorientierter Programmierung in Java. :contentReference[oaicite:1]{index=1}
+Das Projekt verbindet Elektronik-Grundlagen mit objektorientierter Programmierung in Java. 
 
 ---
 
@@ -39,7 +39,7 @@ Die Bibliothek basiert auf einer abstrakten `Resistor`-Klasse mit Spezialisierun
 - `ResistorB5`
 - `ResistorB6`
 
-Zur Codierung der Farbwerte wurden **HashMaps** verwendet, da sie flexible und effiziente Zuordnungen zwischen Farben und Widerstandswerten ermöglichen und leicht erweiterbar sind. :contentReference[oaicite:2]{index=2}  
+Zur Codierung der Farbwerte wurden **HashMaps** verwendet, da sie flexible und effiziente Zuordnungen zwischen Farben und Widerstandswerten ermöglichen und leicht erweiterbar sind.
 
 Beispiele für Designentscheidungen:
 
@@ -61,7 +61,7 @@ Features der GUI:
 - Dynamische Anzeige je nach Bandanzahl  
 - Benutzerfreundliches Layout mit GroupLayout  
 
-Die GUI wird über `EventQueue.invokeLater()` gestartet, um Thread-Sicherheit zu gewährleisten. :contentReference[oaicite:3]{index=3}  
+Die GUI wird über `EventQueue.invokeLater()` gestartet, um Thread-Sicherheit zu gewährleisten. 
 
 ---
 
