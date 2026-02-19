@@ -1,5 +1,3 @@
----
-
 # Shrouded Dales – Action-Adventure Prototype
 
 **Shrouded Dales** ist ein 2D-Action-Adventure-Sidescroller, entwickelt als Teamprojekt im Modul *Spieleentwicklung SS2023* an der Hochschule Trier – Umwelt-Campus Birkenfeld. 
@@ -80,9 +78,6 @@ Diese Systeme werden im Projektbericht ausführlich beschrieben.
 * Christina Kehrbach
 * Philipp Göttel 
 
-Betreuer: Dr. Markus Schwinn
-Hochschule Trier – Umwelt-Campus Birkenfeld.
-
 ---
 
 #  Technologie-Stack
@@ -101,8 +96,6 @@ Hochschule Trier – Umwelt-Campus Birkenfeld.
 * UI-Design mit Godot Control-Nodes
 * Leveldesign mit Tilemaps und Parallax-Layern
 * Teamarbeit im Game-Development-Workflow
-
-Im Projektbericht werden Probleme wie rekursive Animation-States oder Audio-Handling detailliert beschrieben. 
 
 ---
 
