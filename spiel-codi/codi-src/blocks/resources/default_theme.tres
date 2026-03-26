@@ -1,0 +1,39 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cso1pi824ld1"]
+
+[ext_resource type="FontFile" uid="uid://bi821vdtlhy55" path="res://blocks/resources/OpenSans-Semibold.ttf" id="1_cf7v4"]
+
+[sub_resource type="SystemFont" id="SystemFont_pld2e"]
+subpixel_positioning = 3
+multichannel_signed_distance_field = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_LineEdit"]
+bg_color = Color(0.13333334, 0.13333334, 0.13333334, 0.42745098)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7ev2"]
+bg_color = Color(0.13333334, 0.13333334, 0.13333334, 0.42745098)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[resource]
+default_font = ExtResource("1_cf7v4")
+Label/fonts/font = SubResource("SystemFont_pld2e")
+LineEdit/constants/minimum_character_hight = 0
+LineEdit/constants/minimum_character_width = 0
+LineEdit/font_sizes/font_size = 12
+LineEdit/fonts/font = SubResource("SystemFont_pld2e")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_LineEdit")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_LineEdit")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_LineEdit")
+OptionButton/font_sizes/font_size = 12
+OptionButton/fonts/font = SubResource("SystemFont_pld2e")
+OptionButton/styles/focus = SubResource("StyleBoxFlat_k7ev2")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_k7ev2")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_k7ev2")

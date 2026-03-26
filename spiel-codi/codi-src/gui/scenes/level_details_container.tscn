@@ -1,0 +1,132 @@
+[gd_scene load_steps=5 format=3 uid="uid://82nl7yaa6n4g"]
+
+[ext_resource type="Script" uid="uid://dc2kf2jga2nk5" path="res://gui/scripts/containers/LevelDetailsContainer.gd" id="1_container"]
+[ext_resource type="Theme" uid="uid://cso1pi824ld1" path="res://blocks/resources/default_theme.tres" id="2_theme"]
+[ext_resource type="LabelSettings" uid="uid://spuo0jjfnsoc" path="res://blocks/resources/blocks_font.tres" id="3_sknxn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gameview"]
+bg_color = Color(0.15, 0.18, 0.22, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.45, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="LevelDetailsContainer" type="PanelContainer" node_paths=PackedStringArray("show_hints_button", "level_name_label", "level_goal_label", "execution_status_label", "current_action_label", "blocks_and_hints_container", "blocks_and_hints_separator", "blocks_section", "blocks_title", "blocks_list", "hints_section", "hints_title", "hints_list")]
+custom_minimum_size = Vector2(0, 150)
+size_flags_vertical = 3
+theme = ExtResource("2_theme")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gameview")
+script = ExtResource("1_container")
+show_hints_button = NodePath("MarginContainer/VBoxContainer/HeaderContainer/ShowHintsButton")
+level_name_label = NodePath("MarginContainer/VBoxContainer/LevelNameLabel")
+level_goal_label = NodePath("MarginContainer/VBoxContainer/LevelGoalLabel")
+execution_status_label = NodePath("MarginContainer/VBoxContainer/ExecutionStatusLabel")
+current_action_label = NodePath("MarginContainer/VBoxContainer/CurrentActionLabel")
+blocks_and_hints_container = NodePath("MarginContainer/VBoxContainer/BlocksAndHintsContainer")
+blocks_and_hints_separator = NodePath("MarginContainer/VBoxContainer/Separator2")
+blocks_section = NodePath("MarginContainer/VBoxContainer/BlocksAndHintsContainer/BlocksSection")
+blocks_title = NodePath("MarginContainer/VBoxContainer/BlocksAndHintsContainer/BlocksSection/BlocksTitle")
+blocks_list = NodePath("MarginContainer/VBoxContainer/BlocksAndHintsContainer/BlocksSection/BlocksList")
+hints_section = NodePath("MarginContainer/VBoxContainer/BlocksAndHintsContainer/HintsSection")
+hints_title = NodePath("MarginContainer/VBoxContainer/BlocksAndHintsContainer/HintsSection/HintsTitle")
+hints_list = NodePath("MarginContainer/VBoxContainer/BlocksAndHintsContainer/HintsSection/HintsList")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HeaderContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelDetailsLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level Details"
+
+[node name="ShowHintsButton" type="Button" parent="MarginContainer/VBoxContainer/HeaderContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "Show Hints"
+text = "?"
+
+[node name="Separator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelNameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level: -"
+label_settings = ExtResource("3_sknxn")
+
+[node name="LevelGoalLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Goal: -"
+label_settings = ExtResource("3_sknxn")
+autowrap_mode = 2
+
+[node name="Separator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BlocksAndHintsContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+split_offset = -1000
+
+[node name="BlocksSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BlocksAndHintsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="BlocksTitle" type="Label" parent="MarginContainer/VBoxContainer/BlocksAndHintsContainer/BlocksSection"]
+layout_mode = 2
+text = "Available Blocks:"
+label_settings = ExtResource("3_sknxn")
+
+[node name="BlocksList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BlocksAndHintsContainer/BlocksSection"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="HintsSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BlocksAndHintsContainer"]
+visible = false
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="HintsTitle" type="Label" parent="MarginContainer/VBoxContainer/BlocksAndHintsContainer/HintsSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.3, 1)
+text = "Hints:"
+label_settings = ExtResource("3_sknxn")
+
+[node name="HintsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BlocksAndHintsContainer/HintsSection"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Separator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExecutionStatusLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Status: Ready"
+label_settings = ExtResource("3_sknxn")
+
+[node name="CurrentActionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Action: -"
+label_settings = ExtResource("3_sknxn")

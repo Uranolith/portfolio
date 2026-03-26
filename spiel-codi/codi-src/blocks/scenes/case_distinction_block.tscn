@@ -1,0 +1,144 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciyoabcrg024u"]
+
+[ext_resource type="Script" path="../scripts/types/CaseDistinctionBlock.gd" id="1_v14md"]
+[ext_resource type="LabelSettings" uid="uid://spuo0jjfnsoc" path="res://blocks/resources/blocks_font.tres" id="2_6bvml"]
+
+[node name="CaseDistinctionBlock" type="Panel" node_paths=PackedStringArray("snap_condition_color_rect", "snap_true_color_rect", "snap_false_color_rect", "condition_label_label", "else_label_label", "if_inner_label_label", "else_inner_label_label", "if_inner_container_container", "else_inner_container_container", "main_container_control", "snap_top_color_rect", "snap_bot_color_rect") groups=["move_blocks"]]
+custom_minimum_size = Vector2(150, 140)
+offset_right = 150.0
+offset_bottom = 140.0
+script = ExtResource("1_v14md")
+snap_condition_color_rect = NodePath("SnapIndicatorCondition")
+snap_true_color_rect = NodePath("MainContainer/IfInnerContainer/SnapIndicatorTrueInstructionColorRect")
+snap_false_color_rect = NodePath("MainContainer/ElseInnerContainer/SnapIndicatorFalseInstructionColorRect")
+condition_label_label = NodePath("MainContainer/ConditionContainer/ConditionLabel")
+else_label_label = NodePath("MainContainer/Else Label")
+if_inner_label_label = NodePath("MainContainer/IfInnerContainer/IfInnerLabel")
+else_inner_label_label = NodePath("MainContainer/ElseInnerContainer/ElseInnerLabel")
+if_inner_container_container = NodePath("MainContainer/IfInnerContainer")
+else_inner_container_container = NodePath("MainContainer/ElseInnerContainer")
+main_container_control = NodePath("MainContainer")
+snap_top_color_rect = NodePath("SnapIndicatorTop")
+snap_bot_color_rect = NodePath("SnapIndicatorBottom")
+color = Color(0.08426238, 0.21343684, 0.3323934, 0.6)
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 70.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="ConditionContainer" type="Panel" parent="MainContainer"]
+custom_minimum_size = Vector2(140, 25)
+layout_mode = 2
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.2
+mouse_filter = 2
+
+[node name="ConditionLabel" type="Label" parent="MainContainer/ConditionContainer"]
+custom_minimum_size = Vector2(140, 25)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "If Condition"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IfInnerContainer" type="Panel" parent="MainContainer"]
+custom_minimum_size = Vector2(140, 25)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+mouse_filter = 2
+
+[node name="IfInnerLabel" type="Label" parent="MainContainer/IfInnerContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Befehle hier ablegen"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SnapIndicatorTrueInstructionColorRect" type="ColorRect" parent="MainContainer/IfInnerContainer"]
+top_level = true
+custom_minimum_size = Vector2(140, 2)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 150.0
+offset_bottom = 47.0
+color = Color(0.005835998, 0.9642499, 0, 1)
+
+[node name="Else Label" type="Label" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Else:"
+label_settings = ExtResource("2_6bvml")
+vertical_alignment = 1
+
+[node name="ElseInnerContainer" type="Panel" parent="MainContainer"]
+custom_minimum_size = Vector2(140, 25)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+mouse_filter = 2
+
+[node name="ElseInnerLabel" type="Label" parent="MainContainer/ElseInnerContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Befehle hier ablegen"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SnapIndicatorFalseInstructionColorRect" type="ColorRect" parent="MainContainer/ElseInnerContainer"]
+top_level = true
+custom_minimum_size = Vector2(140, 2)
+layout_mode = 1
+offset_left = 10.0
+offset_top = 107.0
+offset_right = 150.0
+offset_bottom = 109.0
+color = Color(0.005835998, 0.9642499, 0, 1)
+
+[node name="SnapIndicatorTop" type="ColorRect" parent="."]
+top_level = true
+custom_minimum_size = Vector2(150, 2)
+layout_mode = 0
+offset_right = 150.0
+color = Color(0, 0.909804, 0.909804, 1)
+
+[node name="SnapIndicatorBottom" type="ColorRect" parent="."]
+top_level = true
+custom_minimum_size = Vector2(150, 2)
+layout_mode = 0
+offset_top = 138.0
+offset_right = 150.0
+offset_bottom = 140.0
+color = Color(0, 0.909804, 0.909804, 1)
+
+[node name="SnapIndicatorCondition" type="ColorRect" parent="."]
+top_level = true
+custom_minimum_size = Vector2(140, 2)
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 12.0
+color = Color(1, 1, 0, 1)

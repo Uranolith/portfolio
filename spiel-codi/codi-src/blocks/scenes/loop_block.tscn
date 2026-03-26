@@ -1,0 +1,210 @@
+[gd_scene load_steps=3 format=3 uid="uid://beposl8ce2qf0"]
+
+[ext_resource type="Script" uid="uid://t6kteebp8dmt" path="res://blocks/scripts/types/LoopBlock.gd" id="1_ndybr"]
+[ext_resource type="LabelSettings" uid="uid://spuo0jjfnsoc" path="res://blocks/resources/blocks_font.tres" id="2_6bvml"]
+
+[node name="LoopBlock" type="Panel" node_paths=PackedStringArray("snap_condition_color_rect", "snap_instruction_color_rect", "top_for_container_h_box_container", "top_while_container_panel", "bottom_do_container_panel", "top_do_container_panel", "inner_container_panel", "inner_label_label", "condition_label_label", "main_container_control", "snap_top_color_rect", "snap_bot_color_rect") groups=["loop_blocks", "move_blocks"]]
+custom_minimum_size = Vector2(150, 80)
+anchors_preset = -1
+anchor_right = 0.13900001
+anchor_bottom = 0.11100001
+offset_right = -0.120010376
+offset_bottom = 0.0799942
+script = ExtResource("1_ndybr")
+snap_condition_color_rect = NodePath("SnapIndicatorConditionColorRect")
+snap_instruction_color_rect = NodePath("MainContainer/InnerContainer/SnapIndicatorInstructionColorRect")
+top_for_container_h_box_container = NodePath("MainContainer/TopForContainer")
+top_while_container_panel = NodePath("MainContainer/TopWhileContainer")
+bottom_do_container_panel = NodePath("MainContainer/BottomDoContainer")
+top_do_container_panel = NodePath("MainContainer/TopDoContainer")
+inner_container_panel = NodePath("MainContainer/InnerContainer")
+inner_label_label = NodePath("MainContainer/InnerContainer/InnerLabel")
+condition_label_label = NodePath("MainContainer/TopWhileContainer/ConditionLabel")
+main_container_control = NodePath("MainContainer")
+snap_top_color_rect = NodePath("SnapIndicatorTopColorRect")
+snap_bot_color_rect = NodePath("SnapIndicatorBottomColorRect")
+color = Color(0.11826434, 0.44153503, 0.27129057, 0.6)
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 70.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="TopForContainer" type="HBoxContainer" parent="MainContainer"]
+visible = false
+custom_minimum_size = Vector2(130, 25)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_constants/separation = 10
+
+[node name="InitPanel" type="Panel" parent="MainContainer/TopForContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="InitLabel" type="Label" parent="MainContainer/TopForContainer/InitPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Init"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConditionPanel" type="Panel" parent="MainContainer/TopForContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="for" type="Label" parent="MainContainer/TopForContainer/ConditionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Bedingung"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StepPanel" type="Panel" parent="MainContainer/TopForContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="StepLabel" type="Label" parent="MainContainer/TopForContainer/StepPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Step"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopWhileContainer" type="Panel" parent="MainContainer"]
+custom_minimum_size = Vector2(130, 25)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+mouse_filter = 2
+
+[node name="ConditionLabel" type="Label" parent="MainContainer/TopWhileContainer"]
+custom_minimum_size = Vector2(140, 25)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loop Condition"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopDoContainer" type="Panel" parent="MainContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+mouse_filter = 2
+
+[node name="TopDoLabel" type="Label" parent="MainContainer/TopDoContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "do"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InnerContainer" type="Panel" parent="MainContainer"]
+custom_minimum_size = Vector2(130, 25)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.8
+mouse_filter = 2
+
+[node name="InnerLabel" type="Label" parent="MainContainer/InnerContainer"]
+custom_minimum_size = Vector2(140, 25)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Befehl hier ablegen"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SnapIndicatorInstructionColorRect" type="ColorRect" parent="MainContainer/InnerContainer"]
+top_level = true
+custom_minimum_size = Vector2(140, 2)
+layout_mode = 1
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 150.0
+offset_bottom = 47.0
+color = Color(0.005835998, 0.9642499, 0, 1)
+
+[node name="BottomDoContainer" type="Panel" parent="MainContainer"]
+visible = false
+custom_minimum_size = Vector2(130, 25)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+mouse_filter = 2
+
+[node name="BottomDoLabel" type="Label" parent="MainContainer/BottomDoContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "while"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SnapIndicatorTopColorRect" type="ColorRect" parent="."]
+top_level = true
+custom_minimum_size = Vector2(150, 2)
+layout_mode = 0
+offset_right = 150.0
+color = Color(0, 0.909804, 0.909804, 1)
+
+[node name="SnapIndicatorBottomColorRect" type="ColorRect" parent="."]
+top_level = true
+custom_minimum_size = Vector2(150, 2)
+layout_mode = 0
+offset_top = 78.0
+offset_right = 150.0
+offset_bottom = 80.0
+color = Color(0, 0.909804, 0.909804, 1)
+
+[node name="SnapIndicatorConditionColorRect" type="ColorRect" parent="."]
+top_level = true
+custom_minimum_size = Vector2(140, 2)
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 12.0
+color = Color(1, 1, 0, 1)

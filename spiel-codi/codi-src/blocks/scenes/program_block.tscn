@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://pk605m5hnnv4"]
+
+[ext_resource type="Script" path="res://blocks/scripts/types/ProgramBlock.gd" id="1_lxwm7"]
+[ext_resource type="LabelSettings" uid="uid://spuo0jjfnsoc" path="res://blocks/resources/blocks_font.tres" id="2_6bvml"]
+
+[node name="ProgramBlock" type="Panel" node_paths=PackedStringArray("snap_instruction_color_rect", "inner_container_panel", "inner_label_label", "main_container_control", "snap_top_color_rect", "snap_bot_color_rect", "block_label") groups=["move_blocks", "program_blocks"]]
+custom_minimum_size = Vector2(150, 70)
+anchors_preset = -1
+anchor_right = 0.13900001
+anchor_bottom = 0.097
+offset_right = -0.120010376
+offset_bottom = 0.15999603
+script = ExtResource("1_lxwm7")
+snap_instruction_color_rect = NodePath("InnerContainer/SnapIndicatorInstructionColorRect")
+inner_container_panel = NodePath("InnerContainer")
+inner_label_label = NodePath("InnerContainer/InnerLabel")
+main_container_control = NodePath(".")
+block_name = "Programm Start"
+indicator_top_accepts = Array[int]([-1])
+indicator_bottom_accepts = Array[int]([-1])
+delete_protection = true
+snap_top_color_rect = NodePath("SnapIndicatorTop")
+snap_bot_color_rect = NodePath("SnapIndicatorBottom")
+block_label = NodePath("ProgramTitle")
+color = Color(0.5826083, 0.28692946, 0.34631312, 0.6)
+
+[node name="ProgramTitle" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 145.0
+offset_bottom = 37.0
+text = "Program Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InnerContainer" type="Panel" parent="."]
+custom_minimum_size = Vector2(140, 25)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 150.0
+offset_bottom = 70.0
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.8
+mouse_filter = 2
+
+[node name="InnerLabel" type="Label" parent="InnerContainer"]
+custom_minimum_size = Vector2(140, 25)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Programm Kette"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SnapIndicatorInstructionColorRect" type="ColorRect" parent="InnerContainer"]
+top_level = true
+custom_minimum_size = Vector2(140, 2)
+layout_mode = 1
+offset_left = 10.0
+offset_top = 43.0
+offset_right = 150.0
+offset_bottom = 45.0
+color = Color(0.005835998, 0.9642499, 0, 1)
+
+[node name="SnapIndicatorTop" type="ColorRect" parent="."]
+visible = false
+top_level = true
+custom_minimum_size = Vector2(150, 2)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 2.0
+color = Color(0, 0.909804, 0.909804, 1)
+
+[node name="SnapIndicatorBottom" type="ColorRect" parent="."]
+visible = false
+top_level = true
+custom_minimum_size = Vector2(150, 2)
+layout_mode = 0
+offset_top = 70.0
+offset_right = 150.0
+offset_bottom = 72.0
+color = Color(0, 0.909804, 0.909804, 1)

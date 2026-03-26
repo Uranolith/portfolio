@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6ruue670l7p0"]
+
+[ext_resource type="PackedScene" uid="uid://dbtx1sk0tnp7l" path="res://character/character.tscn" id="1_8hkcw"]
+[ext_resource type="Script" uid="uid://dhk42u0nb0byw" path="res://gui/scripts/containers/GameViewContainer.gd" id="2_container"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gameview"]
+bg_color = Color(0.15, 0.18, 0.22, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.45, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="GameViewContainer" type="PanelContainer" node_paths=PackedStringArray("game_camera", "character", "run_button", "reset_button")]
+custom_minimum_size = Vector2(0, 300)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gameview")
+script = ExtResource("2_container")
+game_camera = NodePath("MarginContainer/VBoxContainer/GameSubViewportContainer/GameSubViewport/GameCamera")
+character = NodePath("MarginContainer/VBoxContainer/GameSubViewportContainer/GameSubViewport/Character")
+run_button = NodePath("MarginContainer/VBoxContainer/HeaderContainer/RunButton")
+reset_button = NodePath("MarginContainer/VBoxContainer/HeaderContainer/ResetButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HeaderContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameViewLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game View"
+
+[node name="RunButton" type="Button" parent="MarginContainer/VBoxContainer/HeaderContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "Run Program (F5)"
+text = "▶"
+
+[node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer/HeaderContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "Reset Character"
+text = "↺"
+
+[node name="GameSubViewportContainer" type="SubViewportContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="GameSubViewport" type="SubViewport" parent="MarginContainer/VBoxContainer/GameSubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(300, 250)
+render_target_update_mode = 4
+
+[node name="GameCamera" type="Camera2D" parent="MarginContainer/VBoxContainer/GameSubViewportContainer/GameSubViewport"]
+position = Vector2(180, 100)
+zoom = Vector2(1.5, 1.5)
+
+[node name="Character" parent="MarginContainer/VBoxContainer/GameSubViewportContainer/GameSubViewport" instance=ExtResource("1_8hkcw")]
+texture_filter = 1
+position = Vector2(180, 100)
+tile_size = Vector2(16, 16)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MarginContainer/VBoxContainer/GameSubViewportContainer/GameSubViewport"]
+layer = -9999
+
+[node name="GameBackground" type="ColorRect" parent="MarginContainer/VBoxContainer/GameSubViewportContainer/GameSubViewport/CanvasLayer"]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.25, 0.3, 1)

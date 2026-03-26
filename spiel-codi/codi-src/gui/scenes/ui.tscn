@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3ljix4wi6g7s"]
+
+[ext_resource type="Script" uid="uid://cp826cdchlo6b" path="res://gui/scripts/ui.gd" id="1_23eqj"]
+[ext_resource type="PackedScene" uid="uid://bsl1w8e7j8xe5" path="res://gui/scenes/block_canvas_container.tscn" id="2_58mns"]
+[ext_resource type="PackedScene" uid="uid://b6ruue670l7p0" path="res://gui/scenes/game_view_container.tscn" id="3_23eqj"]
+[ext_resource type="PackedScene" uid="uid://82nl7yaa6n4g" path="res://gui/scenes/level_details_container.tscn" id="4_tkt7g"]
+[ext_resource type="Script" path="res://levels/LevelLoader.gd" id="6_iidal"]
+
+[node name="UI_Control" type="Control" node_paths=PackedStringArray("level_loader_node", "block_canvas_container", "game_view_container", "level_details_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_23eqj")
+level_loader_node = NodePath("LevelLoader")
+block_canvas_container = NodePath("HSplitContainer/BlockCanvasContainer")
+game_view_container = NodePath("HSplitContainer/RightPanel/GameViewContainer")
+level_details_container = NodePath("HSplitContainer/RightPanel/LevelDetailsContainer")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+split_offset = -400
+
+[node name="BlockCanvasContainer" parent="HSplitContainer" instance=ExtResource("2_58mns")]
+layout_mode = 2
+
+[node name="RightPanel" type="VSplitContainer" parent="HSplitContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="GameViewContainer" parent="HSplitContainer/RightPanel" instance=ExtResource("3_23eqj")]
+layout_mode = 2
+
+[node name="LevelDetailsContainer" parent="HSplitContainer/RightPanel" instance=ExtResource("4_tkt7g")]
+layout_mode = 2
+theme = null
+
+[node name="LevelLoader" type="Node" parent="."]
+script = ExtResource("6_iidal")

@@ -1,0 +1,106 @@
+[gd_scene load_steps=3 format=3 uid="uid://uliss8brydfu"]
+
+[ext_resource type="Script" uid="uid://qtulonvkhfq5" path="res://gui/scripts/overlays/LevelInfoOverlay.gd" id="1_8rhog"]
+[ext_resource type="Theme" uid="uid://cso1pi824ld1" path="res://blocks/resources/default_theme.tres" id="2_5vkng"]
+
+[node name="LevelOverlay" type="CanvasLayer" node_paths=PackedStringArray("panel_container", "level_name_label", "difficulty_label", "description_label", "goals_container", "hints_container", "blocks_container")]
+script = ExtResource("1_8rhog")
+visible_on_start = true
+panel_container = NodePath("PanelContainer")
+level_name_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/LevelName")
+difficulty_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Difficulty")
+description_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Description")
+goals_container = NodePath("PanelContainer/MarginContainer/VBoxContainer/GoalsSection/GoalsList")
+hints_container = NodePath("PanelContainer/MarginContainer/VBoxContainer/HintsSection/HintsList")
+blocks_container = NodePath("PanelContainer/MarginContainer/VBoxContainer/BlocksSection/BlocksList")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -340.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 400.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="LevelName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Level Name"
+horizontal_alignment = 1
+
+[node name="Difficulty" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Difficulty: ★★★☆☆"
+horizontal_alignment = 1
+
+[node name="HSeparator1" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme = ExtResource("2_5vkng")
+text = "Level Description"
+autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GoalsSection" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="GoalsTitle" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GoalsSection"]
+layout_mode = 2
+theme = ExtResource("2_5vkng")
+text = "Goal:"
+
+[node name="GoalsList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GoalsSection"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="HSeparator3" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BlocksSection" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BlocksTitle" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/BlocksSection"]
+layout_mode = 2
+theme = ExtResource("2_5vkng")
+text = "Blocks:"
+
+[node name="BlocksList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/BlocksSection"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="HSeparator4" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HintsSection" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HintsTitle" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HintsSection"]
+layout_mode = 2
+theme = ExtResource("2_5vkng")
+text = "Hints:"
+
+[node name="HintsList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HintsSection"]
+layout_mode = 2
+theme_override_constants/separation = 2

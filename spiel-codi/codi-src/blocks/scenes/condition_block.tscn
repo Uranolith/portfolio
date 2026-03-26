@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://cja33tcjpv83g"]
+
+[ext_resource type="Script" uid="uid://cpoyb08d666ll" path="res://blocks/scripts/types/ConditionBlock.gd" id="1_0hffy"]
+[ext_resource type="LabelSettings" uid="uid://spuo0jjfnsoc" path="res://blocks/resources/blocks_font.tres" id="2_6bvml"]
+[ext_resource type="Theme" uid="uid://cso1pi824ld1" path="res://blocks/resources/default_theme.tres" id="2_h5yt1"]
+
+[node name="ConditionBlock" type="Panel" node_paths=PackedStringArray("value_input_line_edit", "value_display_label", "snap_top_color_rect", "snap_bot_color_rect", "block_label") groups=["condition_blocks", "move_blocks"]]
+custom_minimum_size = Vector2(150, 25)
+anchors_preset = -1
+anchor_right = 0.13900001
+anchor_bottom = 0.035
+offset_right = -0.120010376
+offset_bottom = -0.20000076
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0hffy")
+value_input_line_edit = NodePath("ValueInput")
+value_display_label = NodePath("ValueDisplayLabel")
+snap_top_color_rect = NodePath("SnapIndicatorTop")
+snap_bot_color_rect = NodePath("SnapIndicatorBottom")
+block_label = NodePath("BlockNameLabel")
+color = Color(0.3745925, 0.35505822, 4.813075e-07, 0.6)
+
+[node name="SnapIndicatorTop" type="ColorRect" parent="."]
+top_level = true
+custom_minimum_size = Vector2(150, 2)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 2.0
+color = Color(0.2, 0.6, 0.8, 1)
+
+[node name="SnapIndicatorBottom" type="ColorRect" parent="."]
+top_level = true
+custom_minimum_size = Vector2(150, 2)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 150.0
+offset_bottom = 25.0
+color = Color(0.2, 0.6, 0.8, 1)
+
+[node name="BlockNameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 25.0
+theme = ExtResource("2_h5yt1")
+text = "Condition"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ValueInput" type="LineEdit" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(30, 23)
+layout_mode = 0
+offset_left = 119.0
+offset_top = 1.0
+offset_right = 149.0
+offset_bottom = 24.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_h5yt1")
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+
+[node name="ValueDisplayLabel" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(30, 23)
+layout_mode = 0
+offset_left = 119.0
+offset_top = 1.0
+offset_right = 149.0
+offset_bottom = 24.0
+theme = ExtResource("2_h5yt1")
+text = "0"
+label_settings = ExtResource("2_6bvml")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://spuo0jjfnsoc"]
+
+[ext_resource type="FontFile" uid="uid://bi821vdtlhy55" path="res://blocks/resources/OpenSans-Semibold.ttf" id="1_chbt4"]
+
+[resource]
+font = ExtResource("1_chbt4")
+font_size = 12

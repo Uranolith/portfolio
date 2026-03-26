@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://q4icfgppnnjo"]
+
+[ext_resource type="Script" uid="uid://dum46mpxin1yu" path="res://blocks/scripts/types/BaseBlock.gd" id="1_qdsbx"]
+[ext_resource type="Theme" uid="uid://cso1pi824ld1" path="res://blocks/resources/default_theme.tres" id="2_cvy20"]
+[ext_resource type="LabelSettings" uid="uid://spuo0jjfnsoc" path="res://blocks/resources/blocks_font.tres" id="2_i4xbr"]
+
+[node name="BaseBlock" type="Panel" node_paths=PackedStringArray("snap_top_color_rect", "snap_bot_color_rect", "block_label") groups=["move_blocks"]]
+custom_minimum_size = Vector2(150, 25)
+anchors_preset = -1
+anchor_right = 0.13900001
+anchor_bottom = 0.039
+offset_right = -0.120010376
+offset_bottom = -0.27200127
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qdsbx")
+snap_top_color_rect = NodePath("SnapIndicatorTop")
+snap_bot_color_rect = NodePath("SnapIndicatorBottom")
+block_label = NodePath("BlockNameLabel")
+
+[node name="BlockNameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 25.0
+theme = ExtResource("2_cvy20")
+text = "Block"
+label_settings = ExtResource("2_i4xbr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SnapIndicatorTop" type="ColorRect" parent="."]
+visible = false
+top_level = true
+custom_minimum_size = Vector2(150, 2)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 2.0
+color = Color(0, 0.909804, 0.909804, 1)
+
+[node name="SnapIndicatorBottom" type="ColorRect" parent="."]
+visible = false
+top_level = true
+custom_minimum_size = Vector2(150, 2)
+layout_mode = 0
+offset_top = 26.0
+offset_right = 150.0
+offset_bottom = 28.0
+color = Color(0, 0.909804, 0.909804, 1)

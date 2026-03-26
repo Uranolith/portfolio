@@ -1,0 +1,129 @@
+[gd_scene load_steps=11 format=3 uid="uid://bsl1w8e7j8xe5"]
+
+[ext_resource type="Script" uid="uid://cu4tfv25y3hbl" path="res://gui/scripts/camera/CameraController.gd" id="1_r6865"]
+[ext_resource type="Script" uid="uid://cue0b7k1hoxjv" path="res://gui/scripts/render/LabelRenderer.gd" id="2_w3x2d"]
+[ext_resource type="Script" uid="uid://dd1l8m8ifatho" path="res://gui/scripts/containers/BlockCanvasContainer.gd" id="3_container"]
+[ext_resource type="Script" uid="uid://csgvejt0w2ef6" path="res://gui/scripts/render/SnapIndicatorRenderer.gd" id="4_snap_renderer"]
+[ext_resource type="Shader" uid="uid://qtpi5d8inbju" path="res://blocks/resources/block_canvas_container.gdshader" id="5_w3x2d"]
+[ext_resource type="Script" uid="uid://2qktyg0r5wao" path="res://gui/scripts/camera/CanvasBackground.gd" id="6_w3x2d"]
+[ext_resource type="Script" uid="uid://bkltc8y4h3gvf" path="res://gui/scripts/menus/BlockSpawnMenu.gd" id="7_32kc8"]
+[ext_resource type="Script" uid="uid://c2ndx7pq5m8ia" path="res://gui/scripts/menus/ContextMenuController.gd" id="8_33msn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gameview"]
+bg_color = Color(0.15, 0.18, 0.22, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.45, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3x2d"]
+shader = ExtResource("5_w3x2d")
+shader_parameter/background_color = Color(0.2, 0.25, 0.3, 1)
+shader_parameter/minor_grid_color = Color(0.5, 0.5, 0.5, 0.33)
+shader_parameter/major_grid_color = Color(0.5, 0.5, 0.5, 0.5)
+shader_parameter/minor_grid_size = 20.0
+shader_parameter/major_grid_ratio = 10.0
+shader_parameter/dot_size = 2.0
+shader_parameter/major_line_thickness = 1.5
+shader_parameter/density_fade_start = 20.0
+shader_parameter/density_fade_end = 5.0
+shader_parameter/camera_position = Vector2(0, 0)
+shader_parameter/camera_zoom = 1.0
+
+[node name="BlockCanvasContainer" type="PanelContainer" node_paths=PackedStringArray("view_all_button", "reset_canvas_button", "canvas_camera", "blocks_container")]
+custom_minimum_size = Vector2(200, 0)
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gameview")
+script = ExtResource("3_container")
+view_all_button = NodePath("MarginContainer/VBoxContainer/HeaderContainer/ViewAllButton")
+reset_canvas_button = NodePath("MarginContainer/VBoxContainer/HeaderContainer/ResetCanvasButton")
+canvas_camera = NodePath("MarginContainer/VBoxContainer/BlockSubViewportContainer/BlockSubViewport/BlockCanvasCamera")
+blocks_container = NodePath("MarginContainer/VBoxContainer/BlockSubViewportContainer/BlockSubViewport/BlockCanvas/Blocks")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HeaderContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BlockCanvasLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Block Canvas"
+
+[node name="ViewAllButton" type="Button" parent="MarginContainer/VBoxContainer/HeaderContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "View All Blocks"
+text = "⛶"
+
+[node name="ResetCanvasButton" type="Button" parent="MarginContainer/VBoxContainer/HeaderContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "Reset Canvas View"
+text = "↺"
+
+[node name="BlockSubViewportContainer" type="SubViewportContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="BlockSubViewport" type="SubViewport" parent="MarginContainer/VBoxContainer/BlockSubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(300, 250)
+render_target_update_mode = 4
+
+[node name="BlockCanvasCamera" type="Camera2D" parent="MarginContainer/VBoxContainer/BlockSubViewportContainer/BlockSubViewport"]
+script = ExtResource("1_r6865")
+
+[node name="BlockCanvas" type="Control" parent="MarginContainer/VBoxContainer/BlockSubViewportContainer/BlockSubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2000.0
+offset_bottom = 2000.0
+
+[node name="Blocks" type="CanvasGroup" parent="MarginContainer/VBoxContainer/BlockSubViewportContainer/BlockSubViewport/BlockCanvas" groups=["blocks_container"]]
+
+[node name="LabelRendererCanvas" type="Node2D" parent="MarginContainer/VBoxContainer/BlockSubViewportContainer/BlockSubViewport/BlockCanvas" groups=["label_renderer", "label_renderer_canvas"]]
+z_index = 999
+script = ExtResource("2_w3x2d")
+
+[node name="SnapIndicatorRenderer" type="Node2D" parent="MarginContainer/VBoxContainer/BlockSubViewportContainer/BlockSubViewport/BlockCanvas" groups=["snap_indicator_renderer"]]
+z_index = 998
+script = ExtResource("4_snap_renderer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MarginContainer/VBoxContainer/BlockSubViewportContainer/BlockSubViewport"]
+layer = -9999
+
+[node name="CanvasBackground" type="ColorRect" parent="MarginContainer/VBoxContainer/BlockSubViewportContainer/BlockSubViewport/CanvasLayer" node_paths=PackedStringArray("target_camera")]
+z_index = -100
+material = SubResource("ShaderMaterial_w3x2d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2509804, 0.3019608, 1)
+script = ExtResource("6_w3x2d")
+target_camera = NodePath("../../BlockCanvasCamera")
+
+[node name="BlockSpawnMenu" type="PopupMenu" parent="MarginContainer/VBoxContainer/BlockSubViewportContainer/BlockSubViewport"]
+script = ExtResource("7_32kc8")
+
+[node name="ContextMenuController" type="Node" parent="MarginContainer/VBoxContainer/BlockSubViewportContainer/BlockSubViewport" node_paths=PackedStringArray("spawn_menu")]
+script = ExtResource("8_33msn")
+spawn_menu = NodePath("../BlockSpawnMenu")

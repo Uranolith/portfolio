@@ -1,0 +1,66 @@
+﻿{
+	"level_name": "Test Level",
+	"level_description": "Simple test level",
+	"difficulty": 1,
+	"available_blocks": {
+		"base_blocks": -1,
+		"condition_blocks": -1,
+		"case_distinction_blocks": -1,
+		"loop_blocks": -1
+	},
+	"initial_blocks": [
+		{
+			"type": "program",
+			"position": {"x": 100, "y": 100},
+			"protected": true
+		},
+		{
+			"type": "base_move_forward",
+			"position": {"x": 400, "y": 100},
+			"protected": false
+		},
+		{
+			"type": "base_turn_left",
+			"position": {"x": 500, "y": 100},
+			"protected": false
+		},
+		{
+			"type": "base_wait",
+			"position": {"x": 600, "y": 100},
+			"protected": false
+		},
+		{
+			"type": "case_if",
+			"position": {"x": 700, "y": 100},
+			"protected": false
+		},
+		{
+			"type": "loop_while",
+			"position": {"x": 400, "y": 200},
+			"protected": false
+		},
+		{
+			"type": "condition_can_move_forward",
+			"position": {"x": 500, "y": 200},
+			"protected": false
+		},
+		{
+			"type": "condition_repeat_count",
+			"position": {"x": 600, "y": 200},
+			"protected": false
+		}
+	],
+	"goals": [
+		"Teste alle Block-Typen (Base, Condition, Case-Distinction, Loop)",
+		"Baue eine funktionierende Programmstruktur",
+		"Verwende Conditions in Loops und If-Blöcken",
+		"Nutze das Value-Input-Feld bei Repeat-Count Conditions"
+	],
+	"hints": [
+		"Condition-Blöcke können in Loop- und Case-Distinction-Blöcke eingefügt werden",
+		"Doppelklick auf den Wert bei 'Repeat X Times' um ihn zu ändern",
+		"Base-Blöcke werden in Instruction-Zonen eingefügt",
+		"Du hast unbegrenzte Blöcke (-1) zum Testen verfügbar"
+	]
+}
+
