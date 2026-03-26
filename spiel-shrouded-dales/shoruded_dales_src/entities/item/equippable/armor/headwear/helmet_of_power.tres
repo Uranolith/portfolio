@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Headwear" load_steps=3 format=3 uid="uid://bmudi0sqsfvo2"]
+
+[ext_resource type="Script" path="res://entities/item/equippable/armor/headwear_data.gd" id="1_nacqo"]
+[ext_resource type="Texture2D" uid="uid://bwfc2q42v4qvk" path="res://assets/items/helmet/Separated Files/H138.png" id="2_h0hoi"]
+
+[resource]
+script = ExtResource("1_nacqo")
+vision_modifier = 0.0
+detectability_modifier = 0.0
+physical_resistance = 0.0
+magical_resistance = 0.0
+durability = 0
+description = ""
+stack_size = 1
+weight = 0
+price = 0
+texture = ExtResource("2_h0hoi")
+name = "Helmet of Power"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Chestwear" load_steps=3 format=3 uid="uid://qnk6y0ow312f"]
+
+[ext_resource type="Script" path="res://entities/item/equippable/armor/chestwear_data.gd" id="1_inftx"]
+[ext_resource type="Texture2D" uid="uid://c8v63vgoaq7y8" path="res://assets/items/armor/Separated Files/a100.png" id="2_aw8s3"]
+
+[resource]
+script = ExtResource("1_inftx")
+healthpoints_modifier = 0.0
+max_weigth_modifier = 0.0
+physical_resistance = 0.0
+magical_resistance = 0.0
+durability = 0
+description = ""
+stack_size = 1
+weight = 0
+price = 0
+texture = ExtResource("2_aw8s3")
+name = "Armor of Wisdom"

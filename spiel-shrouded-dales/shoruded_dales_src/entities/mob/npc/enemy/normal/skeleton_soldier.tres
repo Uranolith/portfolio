@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://b0pi4ap6ut8tp"]
+
+[ext_resource type="Script" path="res://entities/mob/npc/enemy_data.gd" id="1_go4kw"]
+
+[resource]
+script = ExtResource("1_go4kw")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 0.0
+current_health = 0.0
+base_attack = 15
+walk_speed = 0
+name = ""

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://djyv5ghitpg1d"]
+
+[ext_resource type="Script" path="res://scripts/state_machine/enemy_idle.gd" id="1_oyjd3"]
+
+[node name="EnemyIdle" type="Node" node_paths=PackedStringArray("_idle_enought_timer")]
+script = ExtResource("1_oyjd3")
+_idle_enought_timer = NodePath("IdleEnoughTimer")
+
+[node name="IdleEnoughTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="IdleEnoughTimer" to="." method="_on_idle_enough_timer_timeout"]

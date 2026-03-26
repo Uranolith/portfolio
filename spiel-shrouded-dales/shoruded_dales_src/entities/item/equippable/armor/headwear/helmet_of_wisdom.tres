@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Headwear" load_steps=3 format=3 uid="uid://dpw384up1x4dt"]
+
+[ext_resource type="Script" path="res://entities/item/equippable/armor/headwear_data.gd" id="1_nacqo"]
+[ext_resource type="Texture2D" uid="uid://ctovukfkx8k2g" path="res://assets/items/helmet/Separated Files/H98.png" id="2_g0c0j"]
+
+[resource]
+script = ExtResource("1_nacqo")
+vision_modifier = 0.0
+detectability_modifier = 0.0
+physical_resistance = 0.0
+magical_resistance = 0.0
+durability = 0
+description = "This is a helmet to test the System"
+stack_size = 1
+weight = 0
+price = 0
+texture = ExtResource("2_g0c0j")
+name = "Helm der Weisheit"

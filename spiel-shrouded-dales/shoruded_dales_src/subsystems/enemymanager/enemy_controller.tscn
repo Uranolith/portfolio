@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://8fv61iqf7a0t"]
+
+[ext_resource type="Script" path="res://subsystems/enemymanager/enemy_controller.gd" id="1_ptasg"]
+[ext_resource type="PackedScene" uid="uid://co32a5m8jckbq" path="res://scenes/entities/enemies/enemy_normal.tscn" id="2_s2tv2"]
+
+[node name="Enemies" type="Node"]
+script = ExtResource("1_ptasg")
+
+[node name="Enemy_normal" parent="." instance=ExtResource("2_s2tv2")]

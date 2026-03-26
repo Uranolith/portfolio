@@ -1,0 +1,20 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://dq4wris0aog74"]
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_icf6x"]
+resource_name = "Limiter"
+
+[resource]
+bus/1/name = &"music"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -16.4004
+bus/1/send = &"Master"
+bus/2/name = &"sfx"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -21.0931
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectLimiter_icf6x")
+bus/2/effect/0/enabled = true

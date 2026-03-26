@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="Player" load_steps=17 format=3 uid="uid://4g8smw4d0v4o"]
+
+[ext_resource type="Script" path="res://scripts/inventory/equippment_inventory.gd" id="1_k7t1w"]
+[ext_resource type="Script" path="res://entities/mob/player_data.gd" id="1_kdw5o"]
+[ext_resource type="Script" path="res://scripts/inventory/hot_bar_inventory.gd" id="2_au52a"]
+[ext_resource type="Resource" uid="uid://bnhuw5gjd4ts1" path="res://entities/item/consumable/magical_projectile.tres" id="2_pcitb"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory.gd" id="3_1o1sb"]
+[ext_resource type="Resource" uid="uid://dpw384up1x4dt" path="res://entities/item/equippable/armor/headwear/helmet_of_power.tres" id="3_xqkkw"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory_slot_data.gd" id="4_e73hy"]
+[ext_resource type="Resource" uid="uid://ik3c1yd7cktr" path="res://entities/item/consumable/magical_projectile_strong.tres" id="4_pvb8m"]
+[ext_resource type="Resource" uid="uid://bpsmbkfdsf6fm" path="res://entities/item/consumable/mana_beer.tres" id="5_ycxqp"]
+
+[sub_resource type="Resource" id="Resource_tbx57"]
+script = ExtResource("1_k7t1w")
+max_slots = 4
+content = Array[ExtResource("4_e73hy")]([null, null, null, null])
+max_weight = 0.0
+current_weight = 0.0
+
+[sub_resource type="Resource" id="Resource_x5dia"]
+script = ExtResource("4_e73hy")
+content = ExtResource("2_pcitb")
+amount_of_item = 50
+
+[sub_resource type="Resource" id="Resource_yd2xo"]
+script = ExtResource("4_e73hy")
+content = ExtResource("4_pvb8m")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_f5pry"]
+script = ExtResource("2_au52a")
+max_slots = 5
+content = Array[ExtResource("4_e73hy")]([SubResource("Resource_x5dia"), SubResource("Resource_yd2xo"), null, null, null])
+max_weight = 0.0
+current_weight = 0.0
+
+[sub_resource type="Resource" id="Resource_behkd"]
+script = ExtResource("4_e73hy")
+content = ExtResource("3_xqkkw")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_gh355"]
+script = ExtResource("4_e73hy")
+content = ExtResource("5_ycxqp")
+amount_of_item = 20
+
+[sub_resource type="Resource" id="Resource_k874p"]
+script = ExtResource("3_1o1sb")
+max_slots = 35
+content = Array[ExtResource("4_e73hy")]([null, null, null, SubResource("Resource_behkd"), null, null, null, null, null, null, null, null, null, null, null, SubResource("Resource_gh355"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+max_weight = 0.0
+current_weight = 0.0
+
+[resource]
+script = ExtResource("1_kdw5o")
+max_stamina = 100.0
+current_stamina = 100.0
+max_mana = 50
+current_mana = 40
+inventory = SubResource("Resource_k874p")
+equipment_inventory = SubResource("Resource_tbx57")
+hotbar_inventory = SubResource("Resource_f5pry")
+max_health = 100.0
+current_health = 20.0
+walk_speed = 0
+name = "Cirilla"

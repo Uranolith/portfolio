@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm1b4t5yxs4hh"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_pvgod"]
+[ext_resource type="PackedScene" uid="uid://0v5pljfs3t2p" path="res://scenes/ui/user_interface.tscn" id="2_5gjc8"]
+[ext_resource type="PackedScene" uid="uid://gg4brkjvmms6" path="res://scenes/entities/playercharacter/player.tscn" id="3_j7oyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxfi8"]
+size = Vector2(1276.5, 20)
+
+[node name="Main" type="Node2D"]
+
+[node name="Game" type="Node2D" parent="."]
+script = ExtResource("1_pvgod")
+
+[node name="Level" type="Node2D" parent="Game"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Game/Level"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Level/StaticBody2D"]
+position = Vector2(123.25, 467)
+shape = SubResource("RectangleShape2D_gxfi8")
+
+[node name="UserInterface" parent="Game" instance=ExtResource("2_5gjc8")]
+
+[node name="Player" parent="Game" instance=ExtResource("3_j7oyi")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Game/Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="Game"]

@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://dcrqdltq6jere"]
+
+[node name="Keybindingssettincontainer" type="PanelContainer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Menutitle" type="Label" parent="MarginContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Keybindings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Audiosettings" type="HBoxContainer" parent="MarginContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="keytitle" type="VBoxContainer" parent="MarginContainer/VBoxContainer3/Audiosettings"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="right" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/keytitle"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Right
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="left" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/keytitle"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="up" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/keytitle"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="down" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/keytitle"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Down"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="interact" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/keytitle"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inputkey" type="VBoxContainer" parent="MarginContainer/VBoxContainer3/Audiosettings"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="right_key" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/inputkey"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="left_key" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/inputkey"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = " A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="up_key" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/inputkey"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = " W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="down_key" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/inputkey"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = " S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="interact_key" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/inputkey"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = " E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="keytitle2" type="VBoxContainer" parent="MarginContainer/VBoxContainer3/Audiosettings"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="jump" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/keytitle2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dash" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/keytitle2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Dash"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dash_attack" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/keytitle2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Dash-Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="attack" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/keytitle2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slide" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/keytitle2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Slide"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inputkey2" type="VBoxContainer" parent="MarginContainer/VBoxContainer3/Audiosettings"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="jump_key" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/inputkey2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = " SPACE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dash_key" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/inputkey2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "SHIFT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dash_attack_key" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/inputkey2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "SHIFT+M1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="attack_key" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/inputkey2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "M1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slide_key" type="Label" parent="MarginContainer/VBoxContainer3/Audiosettings/inputkey2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "SHIFT+S"
+horizontal_alignment = 1
+vertical_alignment = 1

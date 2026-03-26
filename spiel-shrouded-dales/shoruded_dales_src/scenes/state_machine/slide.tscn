@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpkaay7y27deo"]
+
+[ext_resource type="Script" path="res://scripts/state_machine/slide.gd" id="1_vp5ii"]
+
+[node name="Slide" type="Node"]
+script = ExtResource("1_vp5ii")
+
+[node name="SlideDuration" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SlideDuration" to="." method="_on_slide_duration_timeout"]

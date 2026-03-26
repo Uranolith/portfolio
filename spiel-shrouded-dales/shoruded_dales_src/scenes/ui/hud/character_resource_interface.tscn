@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://baijoycbtofen"]
+
+[ext_resource type="Script" path="res://scripts/ui/character_resources.gd" id="1_goeg5"]
+[ext_resource type="Theme" uid="uid://dhqg4oc8vo8o2" path="res://scenes/ui/hud/styles/default_theme.tres" id="2_dll5v"]
+[ext_resource type="PackedScene" uid="uid://dfojlss212c5t" path="res://scenes/ui/hud/character_resource_bar.tscn" id="2_xgskb"]
+[ext_resource type="StyleBox" uid="uid://c85ehotpsh2vk" path="res://scenes/ui/hud/styles/mana_bar.tres" id="3_wm40x"]
+[ext_resource type="StyleBox" uid="uid://dcqaakyqmmdu0" path="res://scenes/ui/hud/styles/stamina_bar.tres" id="4_n6cbf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hoerp"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.752941)
+border_color = Color(0.137255, 0.137255, 0.137255, 1)
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_bottom_right = 1
+
+[node name="CharacterResources" type="Control" node_paths=PackedStringArray("_health_bar", "_mana_bar", "_stamina_bar")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_goeg5")
+_health_bar = NodePath("PanelContainer/MarginContainer/VBoxContainer/HealthBar")
+_mana_bar = NodePath("PanelContainer/MarginContainer/VBoxContainer/ManaBar")
+_stamina_bar = NodePath("PanelContainer/MarginContainer/VBoxContainer/StaminaBar")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_right = 216.0
+offset_bottom = 46.0
+theme = ExtResource("2_dll5v")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HealthBar" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_xgskb")]
+layout_mode = 2
+
+[node name="ManaBar" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_xgskb")]
+layout_mode = 2
+theme_override_styles/background = ExtResource("3_wm40x")
+
+[node name="StaminaBar" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_xgskb")]
+visible = false
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+theme_override_styles/background = ExtResource("4_n6cbf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hoerp")
+show_bar_label = false

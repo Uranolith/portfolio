@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Chestwear" load_steps=3 format=3 uid="uid://0ktxsb05fmg0"]
+
+[ext_resource type="Script" path="res://entities/item/equippable/armor/chestwear_data.gd" id="1_kliqh"]
+[ext_resource type="Texture2D" uid="uid://btvh74mo3nay4" path="res://assets/items/armor/Separated Files/a137.png" id="2_qvpux"]
+
+[resource]
+script = ExtResource("1_kliqh")
+healthpoints_modifier = 0.0
+max_weigth_modifier = 0.0
+physical_resistance = 0.0
+magical_resistance = 0.0
+durability = 0
+description = ""
+stack_size = 1
+weight = 0
+price = 0
+texture = ExtResource("2_qvpux")
+name = "Armor of Power"

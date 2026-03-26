@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=3 format=3 uid="uid://bpsmbkfdsf6fm"]
+
+[ext_resource type="Script" path="res://entities/item/consumable/consumable_item_data.gd" id="1_opi5h"]
+[ext_resource type="Texture2D" uid="uid://551g43h4js03" path="res://assets/items/food/32x32/62.png" id="2_jk3rb"]
+
+[resource]
+script = ExtResource("1_opi5h")
+duration = 0.0
+effect_value = 10.0
+effect = "MANAREG"
+cooldown = 15.0
+description = "Beer that seems to regenerates you an amount of 10 MP."
+stack_size = 20
+weight = 0
+price = 0
+texture = ExtResource("2_jk3rb")
+name = "Mana Beer"

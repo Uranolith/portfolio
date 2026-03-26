@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbryoukb3cpdd"]
+
+[ext_resource type="Script" path="res://scripts/inventory/hot_bar.gd" id="1_jj273"]
+
+[node name="HotBar" type="PanelContainer" node_paths=PackedStringArray("_h_box_container")]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_jj273")
+_h_box_container = NodePath("MarginContainer/HBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4

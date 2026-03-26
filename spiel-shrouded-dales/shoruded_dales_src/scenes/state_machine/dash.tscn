@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b66hph2bdmebk"]
+
+[ext_resource type="Script" path="res://scripts/state_machine/dash.gd" id="1_apg4v"]
+
+[node name="Dash" type="Node"]
+script = ExtResource("1_apg4v")
+
+[node name="DashDuration" type="Timer" parent="."]
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

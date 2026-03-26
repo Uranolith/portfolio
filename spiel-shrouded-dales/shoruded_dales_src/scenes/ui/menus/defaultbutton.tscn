@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ckvlfscjn4llt"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(96, 32)
+focus_mode = 0

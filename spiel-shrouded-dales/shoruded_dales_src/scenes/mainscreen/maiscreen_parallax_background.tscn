@@ -1,0 +1,215 @@
+[gd_scene load_steps=24 format=3 uid="uid://bumijtcijr3s7"]
+
+[ext_resource type="Script" path="res://scripts/main_screen_parallax_background.gd" id="1_0v43i"]
+[ext_resource type="Texture2D" uid="uid://jwjfpdw6rc67" path="res://assets/map/ssw_set6/!PNG/Background_day1.png" id="2_xqm71"]
+[ext_resource type="Texture2D" uid="uid://bwwpvxm47u5k" path="res://assets/map/ssw_set6/!PNG/Background_day2.png" id="3_7pvfr"]
+[ext_resource type="Texture2D" uid="uid://b27elexynghmh" path="res://assets/map/ssw_set6/!PNG/Background_day3.png" id="4_w22bj"]
+[ext_resource type="Texture2D" uid="uid://c8ojspayy3cpf" path="res://assets/map/ssw_set6/!PNG/Background_day4.png" id="5_hrpkx"]
+[ext_resource type="Texture2D" uid="uid://c2hhxfb7ngqu5" path="res://assets/map/ssw_set6/!PNG/Background_day5.png" id="6_8bkr2"]
+[ext_resource type="TileSet" uid="uid://d3wi03bwnr64g" path="res://scenes/tile_sets/maiscreen_tileset.tres" id="7_kcmsd"]
+[ext_resource type="PackedScene" uid="uid://dfyceoallh45m" path="res://scenes/mainscreen/mainscreen_character.tscn" id="8_b1orr"]
+[ext_resource type="Texture2D" uid="uid://b35xurw4iwmv1" path="res://assets/enemies/flying_eye/Flight.png" id="9_yyp0i"]
+[ext_resource type="Texture2D" uid="uid://cthaa0hcaick0" path="res://assets/enemies/skeleton/Walk.png" id="10_koieu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dna8d"]
+atlas = ExtResource("9_yyp0i")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p06h2"]
+atlas = ExtResource("9_yyp0i")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix12o"]
+atlas = ExtResource("9_yyp0i")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkk5j"]
+atlas = ExtResource("9_yyp0i")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr1on"]
+atlas = ExtResource("9_yyp0i")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jydw4"]
+atlas = ExtResource("9_yyp0i")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuv1i"]
+atlas = ExtResource("9_yyp0i")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vh6x"]
+atlas = ExtResource("9_yyp0i")
+region = Rect2(1050, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6j2d"]
+atlas = ExtResource("10_koieu")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dexno"]
+atlas = ExtResource("10_koieu")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etfc2"]
+atlas = ExtResource("10_koieu")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggr2n"]
+atlas = ExtResource("10_koieu")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mxti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dna8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p06h2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix12o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkk5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr1on")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jydw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuv1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vh6x")
+}],
+"loop": true,
+"name": &"flight",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6j2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dexno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etfc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggr2n")
+}],
+"loop": true,
+"name": &"skeleton_walk",
+"speed": 12.0
+}]
+
+[node name="ParallaxBackground" type="ParallaxBackground" node_paths=PackedStringArray("charactersprite", "monstersprite")]
+script = ExtResource("1_0v43i")
+charactersprite = NodePath("ParallaxLayer6/Character_chasing")
+monstersprite = NodePath("ParallaxLayer6/Monster_fleeing")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="BackgroundDay1" type="Sprite2D" parent="ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(0, 255)
+scale = Vector2(1, 0.795313)
+texture = ExtResource("2_xqm71")
+region_enabled = true
+region_rect = Rect2(0, 0, 2560, 640)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1280, 0)
+
+[node name="BackgroundDay2" type="Sprite2D" parent="ParallaxLayer2"]
+texture_repeat = 2
+position = Vector2(0, 321)
+texture = ExtResource("3_7pvfr")
+region_enabled = true
+region_rect = Rect2(0, 0, 2560, 640)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="BackgroundDay3" type="Sprite2D" parent="ParallaxLayer3"]
+texture_repeat = 2
+position = Vector2(0, 255)
+scale = Vector2(1, 0.795313)
+texture = ExtResource("4_w22bj")
+region_enabled = true
+region_rect = Rect2(0, 0, 2560, 640)
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="BackgroundDay4" type="Sprite2D" parent="ParallaxLayer4"]
+texture_repeat = 2
+position = Vector2(0, 255)
+scale = Vector2(1, 0.795313)
+texture = ExtResource("5_hrpkx")
+region_enabled = true
+region_rect = Rect2(0, 0, 2560, 640)
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1280, 0)
+
+[node name="BackgroundDay5" type="Sprite2D" parent="ParallaxLayer5"]
+texture_repeat = 2
+position = Vector2(0, 255)
+scale = Vector2(1, 0.795313)
+texture = ExtResource("6_8bkr2")
+region_enabled = true
+region_rect = Rect2(0, 0, 2560, 640)
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
+y_sort_enabled = true
+motion_scale = Vector2(1.4, 1.4)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="TileMap" type="TileMap" parent="ParallaxLayer6"]
+light_mask = 7
+visibility_layer = 7
+y_sort_enabled = true
+tile_set = ExtResource("7_kcmsd")
+cell_quadrant_size = 32
+format = 2
+layer_0/name = "Hintergrund"
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(589848, 3, 0, 589856, 3, 0, 589830, 3, 0)
+layer_1/name = "Mittelgrund"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = true
+layer_1/y_sort_origin = 0
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Vordergrund"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = true
+layer_2/y_sort_origin = 0
+layer_2/z_index = 2
+layer_2/tile_data = PackedInt32Array(917557, 1245192, 1, 917556, 1114120, 1, 917555, 1310728, 1, 917554, 1376264, 1, 917553, 1179656, 1, 917552, 1179656, 1, 917551, 1179656, 1, 917550, 1114120, 1, 917549, 1179656, 1, 917548, 1310728, 1, 917547, 1245192, 1, 917546, 1376264, 1, 917545, 1245192, 1, 917544, 1245192, 1, 917543, 1179656, 1, 917542, 1310728, 1, 917541, 1376264, 1, 917540, 1310728, 1, 917539, 1245192, 1, 917538, 1179656, 1, 917537, 1376264, 1, 917536, 1179656, 1, 917535, 1376264, 1, 917534, 1114120, 1, 917533, 1114120, 1, 917532, 1310728, 1, 917531, 1376264, 1, 917530, 1310728, 1, 917529, 1245192, 1, 917528, 1179656, 1, 917527, 1114120, 1, 917526, 1245192, 1, 917525, 1179656, 1, 917524, 1310728, 1, 917523, 1310728, 1, 917522, 1114120, 1, 917521, 1310728, 1, 917520, 1310728, 1, 917519, 1114120, 1, 917518, 1310728, 1, 917517, 1179656, 1, 917516, 1310728, 1, 917515, 1114120, 1, 917514, 1245192, 1, 917513, 1376264, 1, 917512, 1114120, 1, 917511, 1179656, 1, 917510, 1245192, 1, 917509, 1179656, 1, 917508, 1376264, 1, 917507, 1179656, 1, 917506, 1376264, 1, 917505, 1114120, 1, 917504, 1245192, 1, 852012, 1179656, 0, 852011, 1114120, 0, 852010, 1114120, 0, 852009, 1179656, 0, 852008, 1179656, 0, 852007, 1245192, 0, 852006, 1114120, 0, 852005, 1310728, 0, 852004, 1376264, 0, 852003, 1376264, 0, 852002, 1376264, 0, 852001, 1376264, 0, 852000, 1245192, 0, 851999, 1114120, 0, 851998, 1310728, 0, 851997, 1245192, 0, 851996, 1179656, 0, 851995, 1114120, 0, 851994, 1245192, 0, 851993, 1310728, 0, 851992, 1245192, 0, 851991, 1114120, 0, 851990, 1179656, 0, 851989, 1114120, 0, 851988, 1310728, 0, 851987, 1179656, 0, 851986, 1114120, 0, 851985, 1114120, 0, 851984, 1179656, 0, 851983, 1376264, 0, 851982, 1245192, 0, 851981, 1114120, 0, 851980, 1376264, 0, 851979, 1310728, 0, 851978, 1376264, 0, 851977, 1114120, 0, 851976, 1310728, 0, 851975, 1376264, 0, 851974, 1114120, 0, 851973, 1376264, 0, 851972, 1245192, 0, 851971, 1245192, 0, 851970, 1114120, 0, 851969, 1376264, 0, 851968, 1376264, 0, 983040, 131080, 2, 983041, 196616, 2, 983042, 262152, 2, 983043, 131080, 2, 983044, 196616, 2, 983045, 262152, 2, 983046, 131080, 2, 983047, 196616, 2, 983048, 262152, 2, 983049, 131080, 2, 983050, 196616, 2, 983051, 262152, 2, 983052, 131080, 2, 983053, 196616, 2, 983054, 262152, 2, 983055, 131080, 2, 983056, 196616, 2, 983057, 262152, 2, 983058, 131080, 2, 983059, 196616, 2, 983060, 262152, 2, 983061, 131080, 2, 983062, 196616, 2, 983063, 262152, 2, 983064, 131080, 2, 983065, 196616, 2, 983066, 262152, 2, 983067, 131080, 2, 983068, 196616, 2, 983069, 262152, 2, 983070, 131080, 2, 983071, 196616, 2, 983072, 262152, 2, 983073, 131080, 2, 983074, 196616, 2, 983075, 262152, 2, 983076, 131080, 2, 983077, 196616, 2, 983078, 262152, 2, 983079, 131080, 2, 983080, 196616, 2, 983081, 262152, 2, 983082, 131080, 2, 983083, 196616, 2, 983084, 262152, 2, 983085, 131080, 2, 983086, 196616, 2, 983087, 262152, 2, 983088, 131080, 2, 983089, 196616, 2, 983090, 262152, 2, 983091, 131080, 2, 983092, 196616, 2, 983093, 262152, 2, 983094, 131080, 2, 983095, 196616, 2, 983096, 262152, 2, 983097, 131080, 2, 983098, 196616, 2, 983099, 262152, 2, 983100, 131080, 2, 983101, 196616, 2, 983102, 262152, 2, 720898, 1, 0, 720909, 1, 0, 720924, 1, 0)
+
+[node name="Character_chasing" parent="ParallaxLayer6" instance=ExtResource("8_b1orr")]
+position = Vector2(-150, 402)
+scale = Vector2(1, 1)
+centered = false
+
+[node name="Monster_fleeing" type="AnimatedSprite2D" parent="ParallaxLayer6"]
+z_index = 1
+position = Vector2(-29, 423)
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("SpriteFrames_6mxti")
+animation = &"skeleton_walk"
+autoplay = "skeleton_walk"
+frame_progress = 0.173971

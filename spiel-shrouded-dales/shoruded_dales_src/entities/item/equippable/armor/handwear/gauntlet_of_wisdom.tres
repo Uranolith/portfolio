@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Handwear" load_steps=3 format=3 uid="uid://bp2j0575qrfb"]
+
+[ext_resource type="Script" path="res://entities/item/equippable/armor/handwear_data.gd" id="1_lfwjp"]
+[ext_resource type="Texture2D" uid="uid://cxlpu60re5fs5" path="res://assets/items/gauntlet/Separated Files/G105.png" id="2_b14uf"]
+
+[resource]
+script = ExtResource("1_lfwjp")
+attack_speed_modifier = 0.0
+collection_speed_modifier = 0.0
+physical_resistance = 0.0
+magical_resistance = 0.0
+durability = 0
+description = ""
+stack_size = 1
+weight = 0
+price = 0
+texture = ExtResource("2_b14uf")
+name = "Gauntlet of Wisdom"

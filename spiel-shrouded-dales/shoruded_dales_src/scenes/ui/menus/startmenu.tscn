@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckyrdnmyx25bo"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/startmenu.gd" id="1_2beu7"]
+[ext_resource type="PackedScene" uid="uid://ckvlfscjn4llt" path="res://scenes/ui/menus/defaultbutton.tscn" id="1_adlx4"]
+
+[node name="Startmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2beu7")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -79.5
+offset_right = 56.0
+offset_bottom = 79.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="start" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("1_adlx4")]
+layout_mode = 2
+text = "Start"
+
+[node name="load" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("1_adlx4")]
+visible = false
+layout_mode = 2
+text = "Load"
+
+[node name="option" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("1_adlx4")]
+layout_mode = 2
+text = "Option"
+
+[node name="credits" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("1_adlx4")]
+layout_mode = 2
+text = "Credits"
+
+[node name="quit" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("1_adlx4")]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

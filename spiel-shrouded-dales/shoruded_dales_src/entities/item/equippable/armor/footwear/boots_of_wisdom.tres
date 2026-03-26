@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Footwear" load_steps=3 format=3 uid="uid://4trkvxngh1oh"]
+
+[ext_resource type="Script" path="res://entities/item/equippable/armor/footwear_data.gd" id="1_redfc"]
+[ext_resource type="Texture2D" uid="uid://co115ww1p20ll" path="res://assets/items/boots/Separated Files/B111.png" id="2_sulrv"]
+
+[resource]
+script = ExtResource("1_redfc")
+fall_damage_modifier = 0.0
+friction_modifier = 0.0
+physical_resistance = 0.0
+magical_resistance = 0.0
+durability = 0
+description = ""
+stack_size = 1
+weight = 0
+price = 0
+texture = ExtResource("2_sulrv")
+name = "Boots of Wisdom"

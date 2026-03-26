@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://0v5pljfs3t2p"]
+
+[ext_resource type="PackedScene" uid="uid://dowo6huvteg8c" path="res://scenes/ui/inventory/inventory_interface.tscn" id="1_lvqfm"]
+[ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_p8ghr"]
+[ext_resource type="PackedScene" uid="uid://dbryoukb3cpdd" path="res://scenes/ui/inventory/hot_bar.tscn" id="3_bque1"]
+[ext_resource type="PackedScene" uid="uid://baijoycbtofen" path="res://scenes/ui/hud/character_resource_interface.tscn" id="4_h62do"]
+
+[node name="UserInterface" type="CanvasLayer" node_paths=PackedStringArray("_inventory_interface", "_hot_bar", "_character_resource")]
+script = ExtResource("1_p8ghr")
+_inventory_interface = NodePath("InventoryInterface")
+_hot_bar = NodePath("MarginHotbar/HotBar")
+_character_resource = NodePath("MarginCharacterResources/CharacterResources")
+
+[node name="InventoryInterface" parent="." instance=ExtResource("1_lvqfm")]
+visible = false
+
+[node name="MarginHotbar" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -58.0
+offset_right = 144.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="HotBar" parent="MarginHotbar" instance=ExtResource("3_bque1")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginCharacterResources" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="CharacterResources" parent="MarginCharacterResources" instance=ExtResource("4_h62do")]
+layout_mode = 2

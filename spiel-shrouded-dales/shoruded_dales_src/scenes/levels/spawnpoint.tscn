@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://ct8i0r4lvr80h"]
+
+[ext_resource type="Script" path="res://scripts/game_utilities/spawnpoint.gd" id="1_d8dns"]
+[ext_resource type="Texture2D" uid="uid://btfpkugek1k8v" path="res://assets/map/ssw_set5/_PNG/anim/swordlight.png" id="2_eux4c"]
+[ext_resource type="Texture2D" uid="uid://drp7r2ryxbqjb" path="res://assets/map/ssw_set5/_PNG/Decoratives.png" id="3_fef1v"]
+[ext_resource type="PackedScene" uid="uid://bj7kerk8q3hoo" path="res://scenes/levels/audiospawn.tscn" id="4_5tain"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sttly"]
+atlas = ExtResource("2_eux4c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk8jp"]
+atlas = ExtResource("2_eux4c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xieq"]
+atlas = ExtResource("2_eux4c")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p1ex"]
+atlas = ExtResource("2_eux4c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l81tn"]
+atlas = ExtResource("2_eux4c")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daiui"]
+atlas = ExtResource("2_eux4c")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exi68"]
+atlas = ExtResource("3_fef1v")
+region = Rect2(896, 256, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_31wmc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sttly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk8jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xieq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p1ex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l81tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daiui")
+}],
+"loop": true,
+"name": &"checkpoint aktivated",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exi68")
+}],
+"loop": true,
+"name": &"checkpoint_not aktivated",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vx136"]
+size = Vector2(50, 58)
+
+[node name="Spawnpoint" type="Node2D"]
+script = ExtResource("1_d8dns")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_31wmc")
+animation = &"checkpoint aktivated"
+autoplay = "checkpoint_not aktivated"
+frame_progress = 0.750431
+
+[node name="Checkpointtrigger" type="Area2D" parent="."]
+collision_mask = 2
+monitorable = false
+audio_bus_name = &"sfx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpointtrigger"]
+shape = SubResource("RectangleShape2D_vx136")
+
+[node name="AudioArea" parent="." instance=ExtResource("4_5tain")]
+filename = "ignited_spawnpoint"
+distance = 200
+active = false
+
+[connection signal="body_entered" from="Checkpointtrigger" to="." method="_on_checkpointtrigger_body_entered"]
+
+[editable path="AudioArea"]

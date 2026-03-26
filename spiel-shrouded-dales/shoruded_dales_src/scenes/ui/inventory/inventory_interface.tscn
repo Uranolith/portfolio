@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://dowo6huvteg8c"]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_interface.gd" id="1_of3dg"]
+[ext_resource type="PackedScene" uid="uid://d3pvmnn3xgdrl" path="res://scenes/ui/inventory/inventory.tscn" id="2_o2t88"]
+[ext_resource type="Theme" uid="uid://dhqg4oc8vo8o2" path="res://scenes/ui/hud/styles/default_theme.tres" id="3_4xkpf"]
+[ext_resource type="PackedScene" uid="uid://4di3ltomlmx6" path="res://scenes/ui/inventory/inventory_slot.tscn" id="3_lgqp7"]
+
+[node name="InventoryInterface" type="Control" node_paths=PackedStringArray("_player_inventory", "_player_qeuipment_inventory", "_player_hotbar_inventory", "_external_inventory", "_selected_slot")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_of3dg")
+_player_inventory = NodePath("VBoxContainer/DefaultInventoryInterface/PlayerInventory")
+_player_qeuipment_inventory = NodePath("VBoxContainer/DefaultInventoryInterface/PlayerEquipmentInventory")
+_player_hotbar_inventory = NodePath("VBoxContainer/DefaultInventoryInterface/PlayerHotbarInventory")
+_external_inventory = NodePath("VBoxContainer/DefaultInventoryInterface/ExternalInventory")
+_selected_slot = NodePath("SelectedItemSlot")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -18.0
+offset_right = 28.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DefaultInventoryInterface" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerEquipmentInventory" parent="VBoxContainer/DefaultInventoryInterface" instance=ExtResource("2_o2t88")]
+layout_mode = 2
+theme = ExtResource("3_4xkpf")
+
+[node name="ItemGrid" parent="VBoxContainer/DefaultInventoryInterface/PlayerEquipmentInventory/MarginContainer" index="0"]
+columns = 1
+
+[node name="PlayerHotbarInventory" parent="VBoxContainer/DefaultInventoryInterface" instance=ExtResource("2_o2t88")]
+layout_mode = 2
+
+[node name="ItemGrid" parent="VBoxContainer/DefaultInventoryInterface/PlayerHotbarInventory/MarginContainer" index="0"]
+columns = 1
+
+[node name="PlayerInventory" parent="VBoxContainer/DefaultInventoryInterface" instance=ExtResource("2_o2t88")]
+layout_mode = 2
+
+[node name="ExternalInventory" parent="VBoxContainer/DefaultInventoryInterface" instance=ExtResource("2_o2t88")]
+visible = false
+layout_mode = 2
+
+[node name="SelectedItemSlot" parent="." instance=ExtResource("3_lgqp7")]
+modulate = Color(1, 1, 1, 0.627451)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+
+[editable path="VBoxContainer/DefaultInventoryInterface/PlayerEquipmentInventory"]
+[editable path="VBoxContainer/DefaultInventoryInterface/PlayerHotbarInventory"]
+[editable path="VBoxContainer/DefaultInventoryInterface/ExternalInventory"]

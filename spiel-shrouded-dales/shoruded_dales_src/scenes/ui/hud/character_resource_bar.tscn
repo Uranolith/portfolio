@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfojlss212c5t"]
+
+[ext_resource type="Theme" uid="uid://dhqg4oc8vo8o2" path="res://scenes/ui/hud/styles/default_theme.tres" id="1_e67g6"]
+[ext_resource type="StyleBox" uid="uid://vq2mmr85cpqs" path="res://scenes/ui/hud/styles/health_bar.tres" id="2_480ah"]
+[ext_resource type="Script" path="res://scripts/ui/character_resource_bar.gd" id="2_cogo2"]
+[ext_resource type="StyleBox" uid="uid://db5ly2kcm4gjg" path="res://scenes/ui/hud/styles/userbar_background.tres" id="3_cs21c"]
+
+[node name="ResourceBar" type="ProgressBar" node_paths=PackedStringArray("_bar_label")]
+custom_minimum_size = Vector2(100, 15)
+theme = ExtResource("1_e67g6")
+theme_override_styles/background = ExtResource("2_480ah")
+theme_override_styles/fill = ExtResource("3_cs21c")
+value = 1.0
+fill_mode = 1
+show_percentage = false
+script = ExtResource("2_cogo2")
+_bar_label = NodePath("HBoxContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -8.5
+offset_right = 26.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="CurrentLabel" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_e67g6")
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SeparationLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_e67g6")
+text = " / "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaxLabel" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_e67g6")
+text = "200"
+vertical_alignment = 1
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

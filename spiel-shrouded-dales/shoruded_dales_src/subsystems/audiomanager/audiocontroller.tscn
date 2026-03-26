@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm02wwy3vfqi1"]
+
+[ext_resource type="Script" path="res://subsystems/audiomanager/audiocontroller.gd" id="1_fnk3t"]
+
+[node name="AudioController" type="Node" node_paths=PackedStringArray("music")]
+script = ExtResource("1_fnk3t")
+music = NodePath("music_streamplayer")
+
+[node name="music_streamplayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = &"music"

@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfyceoallh45m"]
+
+[ext_resource type="Texture2D" uid="uid://bk6bbt22gpqgo" path="res://assets/playercharacter/Warrior/individual_sprite/Run/Warrior_Run_1.png" id="1_myo8o"]
+[ext_resource type="Texture2D" uid="uid://c8hx7leryr6o5" path="res://assets/playercharacter/Warrior/individual_sprite/Run/Warrior_Run_2.png" id="2_jml2u"]
+[ext_resource type="Texture2D" uid="uid://wi1vpdmfrpo2" path="res://assets/playercharacter/Warrior/individual_sprite/Run/Warrior_Run_3.png" id="3_t7p5k"]
+[ext_resource type="Texture2D" uid="uid://r2dahjp3a4n0" path="res://assets/playercharacter/Warrior/individual_sprite/Run/Warrior_Run_4.png" id="4_iktp7"]
+[ext_resource type="Texture2D" uid="uid://c8xo5ravk8amg" path="res://assets/playercharacter/Warrior/individual_sprite/Run/Warrior_Run_5.png" id="5_5phbk"]
+[ext_resource type="Texture2D" uid="uid://bclf8kh0nwpwd" path="res://assets/playercharacter/Warrior/individual_sprite/Run/Warrior_Run_6.png" id="6_mypow"]
+[ext_resource type="Texture2D" uid="uid://uyepxpxp5kd2" path="res://assets/playercharacter/Warrior/individual_sprite/Run/Warrior_Run_7.png" id="7_sp7lr"]
+[ext_resource type="Texture2D" uid="uid://cq208x8gn1110" path="res://assets/playercharacter/Warrior/individual_sprite/Run/Warrior_Run_8.png" id="8_0mdmq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgvbs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_myo8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jml2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t7p5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iktp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5phbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mypow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sp7lr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0mdmq")
+}],
+"loop": true,
+"name": &"run",
+"speed": 16.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+z_index = 1
+position = Vector2(464, 477)
+scale = Vector2(0.824735, 0.887386)
+sprite_frames = SubResource("SpriteFrames_rgvbs")
+animation = &"run"
+autoplay = "run"

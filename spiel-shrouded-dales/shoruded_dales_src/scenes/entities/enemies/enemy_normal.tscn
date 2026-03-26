@@ -1,0 +1,422 @@
+[gd_scene load_steps=27 format=3 uid="uid://co32a5m8jckbq"]
+
+[ext_resource type="Script" path="res://scripts/entities/enemies/enemy_normal.gd" id="1_ny4nu"]
+[ext_resource type="Script" path="res://entities/mob/npc/enemy_data.gd" id="2_pab72"]
+[ext_resource type="Texture2D" uid="uid://blravx7kqcwkq" path="res://assets/enemies/skeleton/Attack.png" id="3_1l1qh"]
+[ext_resource type="Texture2D" uid="uid://d3t8ba4pbwmi8" path="res://assets/enemies/skeleton/Idle.png" id="3_g56w1"]
+[ext_resource type="Texture2D" uid="uid://bqdxu3jfq402i" path="res://assets/enimies/Skeleton/Idle.png" id="3_jnbgo"]
+[ext_resource type="Script" path="res://scripts/state_machine/enemy_state_machine.gd" id="3_n51t5"]
+[ext_resource type="Texture2D" uid="uid://cthaa0hcaick0" path="res://assets/enemies/skeleton/Walk.png" id="3_ymqr2"]
+[ext_resource type="Texture2D" uid="uid://crdt1hgpq8oko" path="res://assets/enemies/skeleton/Death.png" id="4_nc5ft"]
+[ext_resource type="Texture2D" uid="uid://d0npeun2yv2ht" path="res://assets/enemies/skeleton/Take Hit.png" id="4_v5581"]
+[ext_resource type="PackedScene" uid="uid://djyv5ghitpg1d" path="res://scenes/state_machine/enemy_idle.tscn" id="5_c18pk"]
+[ext_resource type="PackedScene" uid="uid://dhr2q1b80nusw" path="res://scenes/state_machine/enemy_move.tscn" id="6_8u2ra"]
+[ext_resource type="PackedScene" uid="uid://cu3xmnmah731u" path="res://scenes/state_machine/enemy_attack.tscn" id="7_p82ui"]
+[ext_resource type="PackedScene" uid="uid://dfojlss212c5t" path="res://scenes/ui/hud/character_resource_bar.tscn" id="13_0bem6"]
+
+[sub_resource type="Resource" id="Resource_jivp0"]
+script = ExtResource("2_pab72")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("3_g56w1")
+name = ""
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjs65"]
+size = Vector2(28, 45)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mijgm"]
+radius = 856.211
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vds2n"]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyqep"]
+size = Vector2(10, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0apsx"]
+size = Vector2(65, 41)
+
+[sub_resource type="Animation" id="Animation_4v8n6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionFlip/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qibex"]
+resource_name = "enemy_attack"
+length = 1.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionFlip/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_1l1qh"), ExtResource("3_1l1qh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionFlip/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DirectionFlip/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.85, 0.95, 1.05, 1.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 2, 3, 3, 4, 5, 6, 7, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DirectionFlip/AttackHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.95, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_12yfo"]
+resource_name = "enemy_death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionFlip/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_nc5ft"), ExtResource("4_nc5ft")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionFlip/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DirectionFlip/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_t0hme"]
+resource_name = "enemy_hurt"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionFlip/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_v5581")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionFlip/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DirectionFlip/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DirectionFlip/CombatTriggerArea/ProjectileHit:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1b23w"]
+resource_name = "enemy_idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionFlip/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_jnbgo"), ExtResource("3_jnbgo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionFlip/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DirectionFlip/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DirectionFlip/CombatTriggerArea/ProjectileHit:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_d4ftj"]
+resource_name = "enemy_move"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionFlip/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_ymqr2"), ExtResource("3_ymqr2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionFlip/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DirectionFlip/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DirectionFlip/CombatTriggerArea/ProjectileHit:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ja26j"]
+_data = {
+"RESET": SubResource("Animation_4v8n6"),
+"enemy_attack": SubResource("Animation_qibex"),
+"enemy_death": SubResource("Animation_12yfo"),
+"enemy_hurt": SubResource("Animation_t0hme"),
+"enemy_idle": SubResource("Animation_1b23w"),
+"enemy_move": SubResource("Animation_d4ftj")
+}
+
+[node name="Enemy_normal" type="CharacterBody2D" node_paths=PackedStringArray("floor_check", "wall_check", "flip_node", "health_bar", "combat_trigger_area", "attack_trigger_area", "attack_hitbox_area")]
+collision_layer = 8
+script = ExtResource("1_ny4nu")
+floor_check = NodePath("DirectionFlip/FloorCheck")
+wall_check = NodePath("DirectionFlip/WallCheck")
+flip_node = NodePath("DirectionFlip")
+health_bar = NodePath("ResourceBar")
+_details = SubResource("Resource_jivp0")
+combat_trigger_area = NodePath("DirectionFlip/CombatTriggerArea")
+attack_trigger_area = NodePath("DirectionFlip/AttackTriggerArea")
+attack_hitbox_area = NodePath("DirectionFlip/AttackHitbox")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mjs65")
+
+[node name="DirectionFlip" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="DirectionFlip"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_ymqr2")
+hframes = 4
+
+[node name="CombatTriggerArea" type="Area2D" parent="DirectionFlip"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="EnemieViewShape" type="CollisionPolygon2D" parent="DirectionFlip/CombatTriggerArea"]
+polygon = PackedVector2Array(-150, 25, -150, -75, 0, -75, 375, -220, 375, 175, -1, 25)
+
+[node name="ProjectileHit" type="CollisionShape2D" parent="DirectionFlip/CombatTriggerArea"]
+shape = SubResource("CircleShape2D_mijgm")
+disabled = true
+
+[node name="AttackTriggerArea" type="Area2D" parent="DirectionFlip"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlip/AttackTriggerArea"]
+shape = SubResource("CircleShape2D_vds2n")
+
+[node name="FloorCheck" type="Area2D" parent="DirectionFlip"]
+position = Vector2(-6, 4)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlip/FloorCheck"]
+position = Vector2(34, 41.5)
+shape = SubResource("RectangleShape2D_gyqep")
+
+[node name="WallCheck" type="RayCast2D" parent="DirectionFlip"]
+position = Vector2(10, 15)
+target_position = Vector2(5, 0)
+
+[node name="AttackHitbox" type="Area2D" parent="DirectionFlip"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlip/AttackHitbox"]
+position = Vector2(33.5, -4.5)
+shape = SubResource("RectangleShape2D_0apsx")
+disabled = true
+
+[node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("animation_player", "actor", "current_state")]
+script = ExtResource("3_n51t5")
+animation_player = NodePath("../AnimationPlayer")
+actor = NodePath("..")
+current_state = NodePath("EnemyIdle")
+
+[node name="EnemyIdle" parent="EnemyStateMachine" instance=ExtResource("5_c18pk")]
+
+[node name="EnemyMove" parent="EnemyStateMachine" instance=ExtResource("6_8u2ra")]
+
+[node name="EnemyAttack" parent="EnemyStateMachine" instance=ExtResource("7_p82ui")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ja26j")
+}
+
+[node name="ResourceBar" parent="." instance=ExtResource("13_0bem6")]
+visible = false
+offset_left = -16.0
+offset_top = -40.0
+offset_right = 84.0
+offset_bottom = -25.0
+scale = Vector2(0.33, 0.33)
+show_bar_label = false
+
+[node name="ChooseDirectionTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="body_entered" from="DirectionFlip/CombatTriggerArea" to="EnemyStateMachine" method="_on_combat_trigger_area_body_entered"]
+[connection signal="body_exited" from="DirectionFlip/CombatTriggerArea" to="EnemyStateMachine" method="_on_combat_trigger_area_body_exited"]
+[connection signal="body_entered" from="DirectionFlip/AttackTriggerArea" to="EnemyStateMachine" method="_on_attack_trigger_area_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="EnemyStateMachine" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="ChooseDirectionTimer" to="EnemyStateMachine/EnemyMove" method="_on_choose_direction_timer_timeout"]

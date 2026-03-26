@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3pvmnn3xgdrl"]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_container.gd" id="1_doxy3"]
+[ext_resource type="PackedScene" uid="uid://4di3ltomlmx6" path="res://scenes/ui/inventory/inventory_slot.tscn" id="2_pvsmt"]
+
+[node name="Inventory" type="PanelContainer" node_paths=PackedStringArray("_item_grid")]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_doxy3")
+new_slot = ExtResource("2_pvsmt")
+_item_grid = NodePath("MarginContainer/ItemGrid")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ItemGrid" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 7

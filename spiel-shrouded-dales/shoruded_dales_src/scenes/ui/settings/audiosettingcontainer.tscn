@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd57fjmtvd3qk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7qy6w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3nfrd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjw3j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2po11"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_inooa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vpk0"]
+
+[node name="audiosettingscontainer" type="PanelContainer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Menutitle" type="Label" parent="MarginContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer4"]
+layout_mode = 2
+
+[node name="Audiocontainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="general" type="Label" parent="MarginContainer/VBoxContainer4/HBoxContainer/Audiocontainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "General
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="music" type="Label" parent="MarginContainer/VBoxContainer4/HBoxContainer/Audiocontainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sfx" type="Label" parent="MarginContainer/VBoxContainer4/HBoxContainer/Audiocontainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Audiocontainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CheckButton_audio" type="CheckButton" parent="MarginContainer/VBoxContainer4/HBoxContainer/Audiocontainer2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7qy6w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3nfrd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_sjw3j")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2po11")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_inooa")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7vpk0")
+button_pressed = true
+text = "ON"
+icon_alignment = 1
+
+[node name="HSlider_music_volume" type="HSlider" parent="MarginContainer/VBoxContainer4/HBoxContainer/Audiocontainer2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+
+[node name="HSlider_sfx_volume" type="HSlider" parent="MarginContainer/VBoxContainer4/HBoxContainer/Audiocontainer2"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2

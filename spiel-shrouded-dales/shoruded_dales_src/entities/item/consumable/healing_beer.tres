@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=3 format=3 uid="uid://ycxjw2uglci0"]
+
+[ext_resource type="Script" path="res://entities/item/consumable/consumable_item_data.gd" id="1_nut6f"]
+[ext_resource type="Texture2D" uid="uid://d3khctbd876v6" path="res://assets/items/food/32x32/63.png" id="2_82sbm"]
+
+[resource]
+script = ExtResource("1_nut6f")
+duration = 0.0
+effect_value = 10.0
+effect = "HEALTHREG"
+cooldown = 5.0
+description = "Beer that seems to heals you for an amount of 10 HP."
+stack_size = 20
+weight = 0
+price = 0
+texture = ExtResource("2_82sbm")
+name = "Healing Beer"

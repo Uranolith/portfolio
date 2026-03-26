@@ -1,0 +1,693 @@
+[gd_scene load_steps=71 format=3 uid="uid://27u3bjt7qipe"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_yf48t"]
+[ext_resource type="PackedScene" uid="uid://b2y2kffu6q1e5" path="res://scenes/levels/level_1.tscn" id="2_jl4rp"]
+[ext_resource type="PackedScene" uid="uid://b0nagiwgtgxuo" path="res://scenes/item/chest.tscn" id="2_rm8ci"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory.gd" id="3_gn5rf"]
+[ext_resource type="Resource" uid="uid://ycxjw2uglci0" path="res://entities/item/consumable/healing_beer.tres" id="4_tvnwh"]
+[ext_resource type="PackedScene" uid="uid://dp6pd3bqpwg2t" path="res://scenes/item/pickup.tscn" id="4_uu562"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory_slot_data.gd" id="6_5dob4"]
+[ext_resource type="Resource" uid="uid://bnhuw5gjd4ts1" path="res://entities/item/consumable/magical_projectile.tres" id="7_ju1il"]
+[ext_resource type="PackedScene" uid="uid://0v5pljfs3t2p" path="res://scenes/ui/user_interface.tscn" id="7_t1v58"]
+[ext_resource type="Resource" uid="uid://bpsmbkfdsf6fm" path="res://entities/item/consumable/mana_beer.tres" id="8_1anp6"]
+[ext_resource type="PackedScene" uid="uid://gg4brkjvmms6" path="res://scenes/entities/playercharacter/player.tscn" id="8_2yk2f"]
+[ext_resource type="PackedScene" uid="uid://co32a5m8jckbq" path="res://scenes/entities/enemies/enemy_normal.tscn" id="8_ocrbp"]
+[ext_resource type="Resource" uid="uid://dpw384up1x4dt" path="res://entities/item/equippable/armor/headwear/helmet_of_wisdom.tres" id="9_ai4oy"]
+[ext_resource type="Script" path="res://entities/mob/npc/enemy_data.gd" id="9_iw0fi"]
+[ext_resource type="Texture2D" uid="uid://d3t8ba4pbwmi8" path="res://assets/enemies/skeleton/Idle.png" id="10_uf5e2"]
+[ext_resource type="Resource" uid="uid://0ktxsb05fmg0" path="res://entities/item/equippable/armor/chestwear/armor_of_power.tres" id="11_ycnfy"]
+[ext_resource type="Resource" uid="uid://6wcunoiey8rq" path="res://entities/item/equippable/armor/handwear/gauntlet_of_power.tres" id="12_15u3o"]
+[ext_resource type="PackedScene" uid="uid://cknka7pm2cw4k" path="res://scenes/ui/paus_menu_canvas_layer.tscn" id="12_sbkpc"]
+[ext_resource type="PackedScene" uid="uid://bmoraiks1sc1" path="res://scenes/ui/menus/optionmenu.tscn" id="12_ysrsg"]
+[ext_resource type="Resource" uid="uid://bmudi0sqsfvo2" path="res://entities/item/equippable/armor/headwear/helmet_of_power.tres" id="13_p7e7r"]
+[ext_resource type="Resource" uid="uid://bb5forawrc2ys" path="res://entities/item/equippable/armor/footwear/boots_of_power.tres" id="14_h3hy4"]
+[ext_resource type="Resource" uid="uid://ik3c1yd7cktr" path="res://entities/item/consumable/magical_projectile_strong.tres" id="15_c63nd"]
+[ext_resource type="Script" path="res://subsystems/combatmanager/combatmanager.gd" id="15_tl5hr"]
+[ext_resource type="Resource" uid="uid://bp2j0575qrfb" path="res://entities/item/equippable/armor/handwear/gauntlet_of_wisdom.tres" id="16_wq2jx"]
+[ext_resource type="Resource" uid="uid://4trkvxngh1oh" path="res://entities/item/equippable/armor/footwear/boots_of_wisdom.tres" id="17_iagsw"]
+[ext_resource type="Resource" uid="uid://qnk6y0ow312f" path="res://entities/item/equippable/armor/chestwear/armor_of_wisdom.tres" id="18_mf2hr"]
+
+[sub_resource type="Resource" id="Resource_ovb7m"]
+script = ExtResource("6_5dob4")
+content = ExtResource("4_tvnwh")
+amount_of_item = 10
+
+[sub_resource type="Resource" id="Resource_aw44q"]
+script = ExtResource("6_5dob4")
+content = ExtResource("7_ju1il")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_akojk"]
+script = ExtResource("6_5dob4")
+content = ExtResource("8_1anp6")
+amount_of_item = 5
+
+[sub_resource type="Resource" id="Resource_t6ggd"]
+script = ExtResource("6_5dob4")
+content = ExtResource("9_ai4oy")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_luyt8"]
+script = ExtResource("3_gn5rf")
+max_slots = 28
+content = Array[ExtResource("6_5dob4")]([SubResource("Resource_aw44q"), SubResource("Resource_akojk"), null, null, SubResource("Resource_t6ggd"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+max_weight = 0.0
+current_weight = 0.0
+
+[sub_resource type="Resource" id="Resource_6h21i"]
+script = ExtResource("6_5dob4")
+content = ExtResource("11_ycnfy")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_vcvba"]
+script = ExtResource("6_5dob4")
+content = ExtResource("12_15u3o")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_7pnv2"]
+script = ExtResource("6_5dob4")
+content = ExtResource("13_p7e7r")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_u6fup"]
+script = ExtResource("6_5dob4")
+content = ExtResource("14_h3hy4")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_y1aro"]
+script = ExtResource("3_gn5rf")
+max_slots = 21
+content = Array[ExtResource("6_5dob4")]([null, null, SubResource("Resource_6h21i"), null, null, null, SubResource("Resource_vcvba"), null, null, null, null, SubResource("Resource_7pnv2"), null, null, null, null, null, null, SubResource("Resource_u6fup"), null, null])
+max_weight = 0.0
+current_weight = 0.0
+
+[sub_resource type="Resource" id="Resource_qjvxv"]
+script = ExtResource("6_5dob4")
+content = ExtResource("15_c63nd")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_ncvet"]
+script = ExtResource("6_5dob4")
+content = ExtResource("8_1anp6")
+amount_of_item = 20
+
+[sub_resource type="Resource" id="Resource_t7g6i"]
+script = ExtResource("6_5dob4")
+content = ExtResource("4_tvnwh")
+amount_of_item = 20
+
+[sub_resource type="Resource" id="Resource_oy4xb"]
+script = ExtResource("3_gn5rf")
+max_slots = 14
+content = Array[ExtResource("6_5dob4")]([SubResource("Resource_qjvxv"), null, null, SubResource("Resource_ncvet"), null, null, SubResource("Resource_t7g6i"), null, null, null, null, null, null, null])
+max_weight = 0.0
+current_weight = 0.0
+
+[sub_resource type="Resource" id="Resource_0na6m"]
+script = ExtResource("3_gn5rf")
+max_slots = 14
+content = Array[ExtResource("6_5dob4")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+max_weight = 0.0
+current_weight = 0.0
+
+[sub_resource type="Resource" id="Resource_ncyxf"]
+script = ExtResource("6_5dob4")
+content = ExtResource("16_wq2jx")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_t57cj"]
+script = ExtResource("6_5dob4")
+content = ExtResource("17_iagsw")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_lkstp"]
+script = ExtResource("6_5dob4")
+content = ExtResource("18_mf2hr")
+amount_of_item = 1
+
+[sub_resource type="Resource" id="Resource_3i8vn"]
+script = ExtResource("3_gn5rf")
+max_slots = 28
+content = Array[ExtResource("6_5dob4")]([null, null, SubResource("Resource_ncyxf"), null, null, null, null, null, SubResource("Resource_t57cj"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, SubResource("Resource_lkstp"), null, null, null, null])
+max_weight = 0.0
+current_weight = 0.0
+
+[sub_resource type="Resource" id="Resource_8e1lq"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_b5jto"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_5s1xg"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_vstar"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_wc07p"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_1opqa"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_nvlbg"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_3lerj"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_8hb8m"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_mni8v"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_v5eo3"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_1r5sy"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_lwvnj"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_v8n8q"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_48dvc"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_7ewsl"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_r2jft"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_qdhwf"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_g2bfs"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_n8afc"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_8odf7"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_8opcv"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_ftuoe"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_d64f8"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[sub_resource type="Resource" id="Resource_iaxvj"]
+script = ExtResource("9_iw0fi")
+item_drops = Array[Resource("res://entities/item/item_data.gd")]([])
+type = 0
+difficulty_multiplier = 0.0
+base_physical_resistance = 0.0
+base_magical_resistance = 0.0
+invincible = false
+max_health = 100.0
+current_health = 80.0
+base_attack = 10.0
+walk_speed = 50
+texture = ExtResource("10_uf5e2")
+name = ""
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_yf48t")
+
+[node name="Stage" type="Node2D" parent="."]
+
+[node name="Level" type="Node" parent="Stage"]
+
+[node name="Level1" parent="Stage/Level" instance=ExtResource("2_jl4rp")]
+
+[node name="Entities" type="Node" parent="Stage"]
+
+[node name="Pickups" type="Node" parent="Stage/Entities"]
+
+[node name="PickUp" parent="Stage/Entities/Pickups" instance=ExtResource("4_uu562")]
+position = Vector2(220, 251)
+slot_data = SubResource("Resource_ovb7m")
+
+[node name="Chests" type="Node" parent="Stage/Entities"]
+
+[node name="Chest" parent="Stage/Entities/Chests" instance=ExtResource("2_rm8ci")]
+position = Vector2(4019, -72)
+scale = Vector2(-1, 1)
+inventory = SubResource("Resource_luyt8")
+
+[node name="Chest2" parent="Stage/Entities/Chests" instance=ExtResource("2_rm8ci")]
+position = Vector2(6273, -422)
+inventory = SubResource("Resource_y1aro")
+
+[node name="Chest3" parent="Stage/Entities/Chests" instance=ExtResource("2_rm8ci")]
+position = Vector2(8544, 474)
+inventory = SubResource("Resource_oy4xb")
+
+[node name="Chest4" parent="Stage/Entities/Chests" instance=ExtResource("2_rm8ci")]
+position = Vector2(11188, 378)
+inventory = SubResource("Resource_0na6m")
+
+[node name="Chest5" parent="Stage/Entities/Chests" instance=ExtResource("2_rm8ci")]
+position = Vector2(9229, 954)
+scale = Vector2(-1, 1)
+inventory = SubResource("Resource_3i8vn")
+
+[node name="Enemies" type="Node" parent="Stage/Entities"]
+
+[node name="Enemy_normal" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(9802, 636)
+_details = SubResource("Resource_8e1lq")
+
+[node name="Enemy_normal2" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(11061, 1060)
+_details = SubResource("Resource_b5jto")
+
+[node name="Enemy_normal3" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(2840, 31)
+_details = SubResource("Resource_5s1xg")
+
+[node name="Enemy_normal4" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(1488, 35)
+_details = SubResource("Resource_vstar")
+
+[node name="Enemy_normal5" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(7400, 258)
+_details = SubResource("Resource_wc07p")
+
+[node name="Enemy_normal6" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(11457, 1074)
+_details = SubResource("Resource_1opqa")
+
+[node name="Enemy_normal7" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(9702, 908)
+_details = SubResource("Resource_nvlbg")
+
+[node name="Enemy_normal8" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(7773, 347)
+_details = SubResource("Resource_3lerj")
+
+[node name="Enemy_normal9" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(6183, 310)
+_details = SubResource("Resource_8hb8m")
+
+[node name="Enemy_normal10" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(5014, 363)
+_details = SubResource("Resource_mni8v")
+
+[node name="Enemy_normal11" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(6255, 880)
+_details = SubResource("Resource_v5eo3")
+
+[node name="Enemy_normal12" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(4520, 847)
+_details = SubResource("Resource_1r5sy")
+
+[node name="Enemy_normal13" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(4321, 268)
+_details = SubResource("Resource_lwvnj")
+
+[node name="Enemy_normal14" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(10900, 583)
+_details = SubResource("Resource_v8n8q")
+
+[node name="Enemy_normal15" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(9410, 679)
+_details = SubResource("Resource_48dvc")
+
+[node name="Enemy_normal16" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(10537, 932)
+_details = SubResource("Resource_7ewsl")
+
+[node name="Enemy_normal17" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(6706, 532)
+_details = SubResource("Resource_r2jft")
+
+[node name="Enemy_normal18" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(5531, 816)
+_details = SubResource("Resource_qdhwf")
+
+[node name="Enemy_normal19" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(6562, 645)
+_details = SubResource("Resource_g2bfs")
+
+[node name="Enemy_normal20" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(5008, 813)
+_details = SubResource("Resource_n8afc")
+
+[node name="Enemy_normal21" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(9334, 908)
+_details = SubResource("Resource_8odf7")
+
+[node name="Enemy_normal22" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(10112, 876)
+_details = SubResource("Resource_8opcv")
+
+[node name="Enemy_normal23" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(10355, 606)
+_details = SubResource("Resource_ftuoe")
+
+[node name="Enemy_normal24" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(11210, 649)
+_details = SubResource("Resource_d64f8")
+
+[node name="Enemy_normal25" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(4846, -121)
+_details = SubResource("Resource_iaxvj")
+
+[node name="Enemy_normal26" parent="Stage/Entities/Enemies" instance=ExtResource("8_ocrbp")]
+position = Vector2(8444, 433)
+
+[node name="Player" parent="." instance=ExtResource("8_2yk2f")]
+position = Vector2(61, 369)
+jump_height = 200.0
+air_jump_height = 150.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(61, 369)
+zoom = Vector2(1.25, 1.25)
+process_callback = 0
+limit_left = 0
+limit_top = -1168
+position_smoothing_enabled = true
+
+[node name="UserInterface" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("7_t1v58")]
+_player = NodePath("../Player")
+
+[node name="PauseMenu" parent="UserInterface" node_paths=PackedStringArray("game_manager") instance=ExtResource("12_sbkpc")]
+visible = false
+game_manager = NodePath("../..")
+
+[node name="Optionmenu" parent="UserInterface" instance=ExtResource("12_ysrsg")]
+process_mode = 2
+visible = false
+
+[node name="Manager" type="Node" parent="."]
+
+[node name="PlayerManager" type="Node" parent="Manager" node_paths=PackedStringArray("_player")]
+script = ExtResource("15_tl5hr")
+_player = NodePath("../../Player")
+
+[node name="CombatManager" type="Node" parent="Manager"]
+
+[node name="DialogManager" type="Node" parent="Manager"]
+
+[node name="QuestManager" type="Node" parent="Manager"]

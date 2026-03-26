@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2iywuwqa78e"]
+
+[ext_resource type="TileSet" uid="uid://dj81p0fai1yhw" path="res://scenes/tile_sets/tileset_mainscreen.tres" id="1_gt4mj"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StartMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_gt4mj")
+cell_quadrant_size = 32
+format = 2

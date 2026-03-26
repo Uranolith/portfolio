@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Footwear" load_steps=3 format=3 uid="uid://bb5forawrc2ys"]
+
+[ext_resource type="Script" path="res://entities/item/equippable/armor/footwear_data.gd" id="1_h5cma"]
+[ext_resource type="Texture2D" uid="uid://dl225sai8rnqb" path="res://assets/items/boots/Separated Files/B140.png" id="2_itosf"]
+
+[resource]
+script = ExtResource("1_h5cma")
+fall_damage_modifier = 0.0
+friction_modifier = 0.0
+physical_resistance = 0.0
+magical_resistance = 0.0
+durability = 0
+description = ""
+stack_size = 1
+weight = 0
+price = 0
+texture = ExtResource("2_itosf")
+name = "Boots of Power"
