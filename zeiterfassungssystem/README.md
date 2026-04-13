@@ -127,7 +127,7 @@ Diese Dateien sind bewusst ausgelagert, damit keine Zugangsdaten im Code stehen.
 
 #  Projektbericht
 
- [Projektbericht öffnen](version_20240311.pdf)
+ [Projektbericht öffnen](doc/version_20240311.pdf)
 
 ---
 
